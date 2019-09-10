@@ -4,6 +4,7 @@
   "description": "portfolio webapp",
   "main": "index.js",
   "scripts": {
+    "server": "env-cmd nodemon backend/server",
     "client": "npm start --prefix client"
   },
   "author": "tunde usman",
