@@ -1,17 +1,30 @@
 const express = require('express');
 const cors = require('cors');
 
+// imports the database
+require('./db/mongoose');
+
+// imports the routers
+const userRouter = require('./routes/api/public/user');
+const logoRouter = require('./routes/api/private/logo');
+const aboutRouter = require('./routes/api/private/about');
+
 const app = express();
 
 // enable cors
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.json({ msg: 'working' });
-});
-
 // enable json
 app.use(express.json());
+
+// enable the routers
+app.use('/api/user', userRouter);
+app.use('/api/logo', logoRouter);
+app.use('/api/about', aboutRouter);
+
+app.get('*', (req, res) => {
+  res.json({ msg: 'working' });
+});
 
 // default port
 const port = process.env.PORT;
