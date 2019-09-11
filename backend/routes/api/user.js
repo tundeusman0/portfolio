@@ -1,6 +1,6 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
+const auth = require('../../middleware/auth');
 
 const router = new express.Router();
 
@@ -30,11 +30,11 @@ router.post('/', async (req, res) => {
 // @access Public
 router.get('/details', async (req, res) => {
   try {
-    const details = await User.find();
-    if (!details[0].isAdmin) {
+    const details = await User.findOne();
+    if (!details.isAdmin) {
       throw new Error();
     }
-    res.status(200).json(details[0]);
+    res.status(200).json(details);
   } catch (error) {
     res.status(400).json({ msg: 'error' });
   }
@@ -55,6 +55,13 @@ router.post('/login', async (req, res) => {
   } catch (error) {
     return res.status(400).json({ msg: 'Not Authorized' });
   }
+});
+
+// @router PATCH api/user
+// @desc update user details
+// @access  Private
+router.patch('/', auth, (req, res) => {
+  res.status(200);
 });
 
 module.exports = router;
