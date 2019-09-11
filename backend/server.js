@@ -5,11 +5,11 @@ const cors = require('cors');
 require('./db/mongoose');
 
 // imports the routers
-const userRouter = require('./routes/api/public/user');
-const logoRouter = require('./routes/api/private/logo');
-const aboutRouter = require('./routes/api/private/about');
-const resumeRouter = require('./routes/api/private/resume');
-const blogRouter = require('./routes/api/private/blog');
+const userRouter = require('./routes/api/user');
+// const logoRouter = require('./routes/api/private/logo');
+// const aboutRouter = require('./routes/api/about');
+// const resumeRouter = require('./routes/api/resume');
+// const blogRouter = require('./routes/api/private/blog');
 
 const app = express();
 
@@ -21,10 +21,10 @@ app.use(express.json());
 
 // enable the routers
 app.use('/api/user', userRouter);
-app.use('/api/logo', logoRouter);
-app.use('/api/about', aboutRouter);
-app.use('/api/resume', resumeRouter);
-app.use('/api/blog', blogRouter);
+// app.use('/api/logo', logoRouter);
+// app.use('/api/about', aboutRouter);
+// app.use('/api/resume', resumeRouter);
+// app.use('/api/blog', blogRouter);
 
 app.get('*', (req, res) => {
   res.json({ msg: 'working' });

@@ -72,7 +72,11 @@ const ResumeSchema = new mongoose.Schema({
       workPlace: String,
       email: String
     }
-  ]
+  ],
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+  }
 });
 
 const Resume = mongoose.model('Resume', ResumeSchema);
