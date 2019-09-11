@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 
 const router = new express.Router();
@@ -16,14 +17,15 @@ router.post('/', async (req, res) => {
       throw new Error();
     }
     const user = new User(req.body);
+    const token = await user.generateAuthToken();
     const response = await user.save();
-    res.json(response);
+    res.status(200).json({ response, token });
   } catch (error) {
     return res.status(400).json({ msg: 'Unable to register' });
   }
 });
 
-// @route GET api/details
+// @route GET api/user/details
 // @desc get portfolio user details
 // @access Public
 router.get('/details', async (req, res) => {
@@ -35,6 +37,23 @@ router.get('/details', async (req, res) => {
     res.status(200).json(details[0]);
   } catch (error) {
     res.status(400).json({ msg: 'error' });
+  }
+});
+
+// @router  POST api/user/login
+// @desc    login registered porfolio user
+// @access  Public
+router.post('/login', async (req, res) => {
+  const { password, email } = req.body;
+  try {
+    if (!password || !email) {
+      return res.status(404).json({ msg: 'error' });
+    }
+    const user = await User.findByCredentials(email, password);
+    const token = await user.generateAuthToken();
+    res.status(200).json({ user, token });
+  } catch (error) {
+    return res.status(400).json({ msg: 'Not Authorized' });
   }
 });
 
