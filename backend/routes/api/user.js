@@ -96,7 +96,8 @@ router.patch(
         { $set: { homePix: req.user.homePix } },
         { new: true }
       );
-      res.status(200).json(user);
+      res.set('Content-Type', 'image/jpg');
+      res.status(200).send(user.homePix);
     } catch (error) {
       res.status(400).send('Error');
     }
@@ -119,6 +120,49 @@ router.get('/homePix', async (req, res) => {
     }
     res.set('Content-Type', 'image/jpg');
     res.status(200).send(user.homePix);
+  } catch (error) {
+    res.status(400).json({ msg: 'error' });
+  }
+});
+
+// @router Patch api/user/status
+// @desc update status and info
+// @access PRIVATE
+router.patch('/status', auth, async (req, res) => {
+  let { info, status } = req.body;
+  if (typeof status !== 'boolean') {
+    return res.status(406).json({ msg: 'fill all fields.' });
+  }
+  if (!info) {
+    !req.user.info ? (info = 'No info') : (info = req.user.info);
+  }
+  try {
+    const UpdatedStatus = await User.findByIdAndUpdate(
+      req.user._id,
+      { $set: { info, status } },
+      { new: true }
+    );
+    res.status(200).send(UpdatedStatus);
+  } catch (error) {
+    res.status(400).json({ msg: 'error' });
+  }
+});
+
+// @router PATCH api/user
+// @desc update user details
+// @access PRIVATE
+router.patch('/', auth, async (req, res) => {
+  let { email, userName } = req.body;
+  if (!email || !userName) {
+    return res.status(406).json({ msg: 'fill all fields.' });
+  }
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      { $set: { email, userName } },
+      { new: true }
+    );
+    res.status(200).send(updatedUser);
   } catch (error) {
     res.status(400).json({ msg: 'error' });
   }
