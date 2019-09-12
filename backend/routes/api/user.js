@@ -1,4 +1,6 @@
 const express = require('express');
+const multer = require('multer');
+const sharp = require('sharp');
 const User = require('../../models/user');
 const auth = require('../../middleware/auth');
 
@@ -57,11 +59,69 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// @router PATCH api/user
-// @desc update user details
+const upload = multer({
+  limits: {
+    fileSize: 1000000
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|png|jpeg)/)) {
+      return cb(new Error('Please Upload should be images only'));
+    }
+    cb(undefined, true);
+  }
+});
+
+// @router PATCH api/user/homePix
+// @desc update user home picture
 // @access  Private
-router.patch('/', auth, (req, res) => {
-  res.status(200);
+router.patch(
+  '/homePix',
+  auth,
+  upload.single('upload'),
+  async (req, res) => {
+    if (!req.file) {
+      return res.status(406).json({ msg: 'Please upload a pictue' });
+    }
+    try {
+      const buffer = await sharp(req.file.buffer)
+        .resize({
+          width: 250,
+          height: 250
+        })
+        .png()
+        .toBuffer();
+      req.user.homePix = buffer;
+      const user = await User.findByIdAndUpdate(
+        req.user._id,
+        { $set: { homePix: req.user.homePix } },
+        { new: true }
+      );
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(400).send('Error');
+    }
+  },
+  (error, req, res, next) => {
+    res.status(400).json({
+      error: error.message
+    });
+  }
+);
+
+// @router GET api/user/homePix
+// @desc   get portfolio home picture
+// @access Public
+router.get('/homePix', async (req, res) => {
+  try {
+    const user = await User.findOne();
+    if (!user.isAdmin) {
+      throw new Error();
+    }
+    res.set('Content-Type', 'image/jpg');
+    res.status(200).send(user.homePix);
+  } catch (error) {
+    res.status(400).json({ msg: 'error' });
+  }
 });
 
 module.exports = router;

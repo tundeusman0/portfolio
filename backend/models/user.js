@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  pix: {
+  homePix: {
     type: Buffer
   },
   info: {
@@ -46,6 +46,7 @@ UserSchema.methods.toJSON = function() {
   const userObject = user.toObject();
   delete userObject.password;
   delete userObject.isAdmin;
+  delete userObject.homePix;
   return userObject;
 };
 
