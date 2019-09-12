@@ -79,6 +79,13 @@ const ResumeSchema = new mongoose.Schema({
   }
 });
 
+ResumeSchema.methods.toJSON = function() {
+  const resume = this;
+  const resumeObject = resume.toObject();
+  delete resumeObject.pix;
+  return resumeObject;
+};
+
 const Resume = mongoose.model('Resume', ResumeSchema);
 
 module.exports = Resume;
