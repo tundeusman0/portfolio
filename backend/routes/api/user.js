@@ -168,4 +168,66 @@ router.patch('/', auth, async (req, res) => {
   }
 });
 
+// @router POST api/user/skills
+// @desc post user skills
+// @access PRIVATE
+router.post('/skills', auth, async (req, res) => {
+  const { rating, skill } = req.body;
+  if (!rating || !skill) {
+    return res.status(406).json({ msg: 'fill all fields.' });
+  }
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      throw new Error();
+    }
+    user.skills = user.skills.concat({ rating, skill });
+    user.save();
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(400).json({ msg: 'error' });
+  }
+});
+
+// @router PATCH api/user/skills
+// @desc update user skills
+// @access PRIVATE
+router.patch('/skills/:id', auth, async (req, res) => {
+  const _id = req.params.id;
+  const { rating, skill } = req.body;
+  if (!rating || !skill) {
+    return res.status(406).json({ msg: 'fill all fields.' });
+  }
+  try {
+    const user = await User.findOneAndUpdate(
+      { 'skills._id': _id },
+      { $set: { 'skills.$.rating': rating, 'skills.$.skill': skill } },
+      { new: true }
+    );
+    if (!user) {
+      throw new Error();
+    }
+
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(400).json({ msg: 'error' });
+  }
+});
+
+// @router DELETE api/user/skills
+// @desc delete user skills
+// @access PRIVATE
+router.delete('/skills/:id', auth, async (req, res) => {
+  const _id = req.params.id;
+  try {
+    const user = await User.findOneAndUpdate(_id, {$pull: { skills: { _id } }},{new:true});
+    if (!user) {
+      throw new Error();
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(400).json({ msg: 'error' });
+  }
+});
+
 module.exports = router;
