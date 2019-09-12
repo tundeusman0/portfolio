@@ -1,18 +1,12 @@
 exports.updateResume = async function updateResume(
-  started,
-  to,
-  school,
-  grade,
+  condition,
   res,
+  target,
   Resume
 ) {
   try {
     const resume = await Resume.findOne();
-    resume.education = resume.education.concat({
-      date: { started, to },
-      school,
-      grade
-    });
+    resume[target] = resume[target].concat(condition);
     resume.save();
     res.status(200).send(resume);
   } catch (error) {
@@ -20,11 +14,17 @@ exports.updateResume = async function updateResume(
   }
 };
 
-exports.deleteResume = async function deleteResume(req, _id, res, Resume) {
+exports.deleteResume = async function deleteResume(
+  req,
+  _id,
+  res,
+  Resume,
+  target
+) {
   try {
     const resume = await Resume.findOneAndUpdate(
       { createdBy: req.user._id },
-      { $pull: { education: { _id } } },
+      { $pull: { [target]: { _id } } },
       { new: true }
     );
     if (!resume) {

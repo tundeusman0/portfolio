@@ -5,28 +5,24 @@ const { updateResume, deleteResume } = require('./utils');
 
 const router = new express.Router();
 
-// @router POST api/resume/education
-// @desc post resume educations
+// @router PATCH api/resume/professional
+// @desc post resume professional body
 // @access PRIVATE
 router.patch('/', auth, async (req, res) => {
-  const { school, grade, started, to } = req.body;
-  if (!school || !grade || !started || !to) {
+  const { name, certy, date } = req.body;
+  if (!name || !certy || !date) {
     return res.status(404).json({ msg: 'Please fill all fields' });
   }
-  const data = {
-    date: { started, to },
-    school,
-    grade
-  };
-  await updateResume(data, res, 'education', Resume);
+
+  await updateResume({ name, certy, date }, res, 'proffesionalBody', Resume);
 });
 
-// @router DELETE api/resume/eduction/id
-// @desc delete user one eduction history
+// @router DELETE api/resume/professional/id
+// @desc delete user one professional body history
 // @access PRIVATE
 router.delete('/:id', auth, async (req, res) => {
   const _id = req.params.id;
-  await deleteResume(req, _id, res, Resume, 'education');
+  await deleteResume(req, _id, res, Resume, 'proffesionalBody');
 });
 
 module.exports = router;
