@@ -10,6 +10,7 @@ const userRouter = require('./routes/api/user');
 // const aboutRouter = require('./routes/api/about');
 const resumeRouter = require('./routes/api/resume/resume');
 const resumePixRouter = require('./routes/api/resume/resumePix');
+const resumeEduRouter = require('./routes/api/resume/education');
 // const blogRouter = require('./routes/api/private/blog');
 
 const app = express();
@@ -26,6 +27,7 @@ app.use('/api/user', userRouter);
 // app.use('/api/about', aboutRouter);
 app.use('/api/resume', resumeRouter);
 app.use('/api/resume/pix', resumePixRouter);
+app.use('/api/resume/education', resumeEduRouter);
 // app.use('/api/blog', blogRouter);
 
 app.get('*', (req, res) => {

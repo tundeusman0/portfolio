@@ -15,7 +15,7 @@ const ResumeSchema = new mongoose.Schema({
   education: [
     {
       date: {
-        from: String,
+        started: String,
         to: String
       },
       school: String,
