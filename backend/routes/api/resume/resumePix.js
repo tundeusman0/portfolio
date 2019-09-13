@@ -19,7 +19,7 @@ router.patch(
     if (!req.file) {
       return res.status(406).json({ msg: 'Please upload a pictue' });
     }
-    await uploadImage(req, res, 'pix', Resume);
+    await uploadImage(req, res, 'pix', Resume, { createdBy: req.user._id });
   },
   (error, req, res, next) => {
     res.status(400).json({
@@ -32,7 +32,7 @@ router.patch(
 // @desc   get resume picture
 // @access Public
 router.get('/', async (req, res) => {
-  await getImage(res, Resume);
+  await getImage(res, Resume, 'pix');
 });
 
 module.exports = router;

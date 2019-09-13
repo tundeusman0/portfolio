@@ -19,7 +19,8 @@ exports.uploadImage = async function uploadImage(
   req,
   res,
   pixName,
-  collectionName
+  collectionName,
+  search
 ) {
   try {
     const buffer = await sharp(req.file.buffer)
@@ -30,7 +31,7 @@ exports.uploadImage = async function uploadImage(
       .png()
       .toBuffer();
     const updatedCollectionName = await collectionName.findOneAndUpdate(
-      { createdBy: req.user._id },
+      search,
       { $set: { [pixName]: buffer } },
       { new: true }
     );
@@ -41,14 +42,14 @@ exports.uploadImage = async function uploadImage(
   }
 };
 
-exports.getImage = async function getImage(res, collectionName) {
+exports.getImage = async function getImage(res, collectionName, pix) {
   try {
     const response = await collectionName.findOne();
     if (!response) {
       throw new Error();
     }
     res.set('Content-Type', 'image/jpg');
-    res.status(200).send(response.pix);
+    res.status(200).send(response[pix]);
   } catch (error) {
     res.status(400).json({ msg: 'error' });
   }
