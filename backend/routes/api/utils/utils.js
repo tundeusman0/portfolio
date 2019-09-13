@@ -62,3 +62,21 @@ exports.getData = async function getData(res, collectionName) {
     res.status(400).json({ msg: 'error' });
   }
 };
+
+exports.updateDbArrayObj = async function updateDbArrayObj(
+  res,
+  data,
+  projectid,
+  DB
+) {
+  try {
+    const response = await DB.findOneAndUpdate(
+      projectid,
+      { $set: data },
+      { new: true }
+    );
+    res.status(200).send(response);
+  } catch (error) {
+    res.status(400).json({ msg: 'error' });
+  }
+};

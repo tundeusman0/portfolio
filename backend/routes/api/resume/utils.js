@@ -1,10 +1,6 @@
-const Resume = require("../../../models/resume")
+const Resume = require('../../../models/resume');
 
-exports.updateResume = async function updateResume(
-  condition,
-  res,
-  target
-) {
+exports.updateResume = async function updateResume(condition, res, target) {
   try {
     const resume = await Resume.findOne();
     resume[target] = resume[target].concat(condition);
@@ -15,12 +11,7 @@ exports.updateResume = async function updateResume(
   }
 };
 
-exports.deleteResume = async function deleteResume(
-  req,
-  _id,
-  res,
-  target
-) {
+exports.deleteResume = async function deleteResume(req, _id, res, target) {
   try {
     const resume = await Resume.findOneAndUpdate(
       { createdBy: req.user._id },

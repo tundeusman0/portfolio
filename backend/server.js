@@ -13,6 +13,7 @@ const resumePixRouter = require('./routes/api/resume/resumePix');
 const resumeEduRouter = require('./routes/api/resume/education');
 const resumeProfRouter = require('./routes/api/resume/proffesionalBody');
 const resumeRefRouter = require('./routes/api/resume/reference');
+const resumeProjRouter = require('./routes/api/resume/projects');
 // const blogRouter = require('./routes/api/private/blog');
 
 const app = express();
@@ -32,6 +33,7 @@ app.use('/api/resume/pix', resumePixRouter);
 app.use('/api/resume/education', resumeEduRouter);
 app.use('/api/resume/professional', resumeProfRouter);
 app.use('/api/resume/reference', resumeRefRouter);
+app.use('/api/resume/projects', resumeProjRouter);
 // app.use('/api/blog', blogRouter);
 
 app.get('*', (req, res) => {
