@@ -1,5 +1,4 @@
 const express = require('express');
-const Resume = require('../../../models/resume');
 const auth = require('../../../middleware/auth');
 const { updateResume, deleteResume } = require('./utils');
 
@@ -13,12 +12,7 @@ router.patch('/', auth, async (req, res) => {
   if (!name || !post || !workPlace || !email) {
     return res.status(404).json({ msg: 'Please fill all fields' });
   }
-  await updateResume(
-    { name, post, workPlace, email },
-    res,
-    'reference',
-    Resume
-  );
+  await updateResume({ name, post, workPlace, email }, res, 'reference');
 });
 
 // @router DELETE api/resume/reference/id
@@ -26,7 +20,7 @@ router.patch('/', auth, async (req, res) => {
 // @access PRIVATE
 router.delete('/:id', auth, async (req, res) => {
   const _id = req.params.id;
-  await deleteResume(req, _id, res, Resume, 'reference');
+  await deleteResume(req, _id, res, 'reference');
 });
 
 module.exports = router;

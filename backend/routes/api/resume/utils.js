@@ -1,8 +1,9 @@
+const Resume = require("../../../models/resume")
+
 exports.updateResume = async function updateResume(
   condition,
   res,
-  target,
-  Resume
+  target
 ) {
   try {
     const resume = await Resume.findOne();
@@ -18,7 +19,6 @@ exports.deleteResume = async function deleteResume(
   req,
   _id,
   res,
-  Resume,
   target
 ) {
   try {

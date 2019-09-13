@@ -1,6 +1,7 @@
 const express = require('express');
 const Resume = require('../../../models/resume');
 const auth = require('../../../middleware/auth');
+const { getData } = require('../utils/utils');
 
 const router = new express.Router();
 
@@ -56,12 +57,7 @@ router.post('/', auth, async (req, res) => {
 // @desc get the resume
 // @access PUBLIC
 router.get('/', async (req, res) => {
-  try {
-    const resume = await Resume.findOne();
-    res.status(200).json(resume);
-  } catch (error) {
-    res.status(400).json({ msg: 'error' });
-  }
+  await getData(res, Resume);
 });
 
 // @router PATCH api/resume
