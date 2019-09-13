@@ -50,14 +50,14 @@ const ResumeSchema = new mongoose.Schema({
   tech: [
     {
       logo: String,
-      Name: String,
+      name: String,
       ability: String
     }
   ],
   social: [
     {
       logo: String,
-      Name: String,
+      name: String,
       link: String
     }
   ],
