@@ -8,14 +8,7 @@ require('./db/mongoose');
 const userRouter = require('./routes/api/user');
 // const logoRouter = require('./routes/api/private/logo');
 // const aboutRouter = require('./routes/api/about');
-const resumeRouter = require('./routes/api/resume/resume');
-const resumePixRouter = require('./routes/api/resume/resumePix');
-const resumeEduRouter = require('./routes/api/resume/education');
-const resumeProfRouter = require('./routes/api/resume/proffesionalBody');
-const resumeRefRouter = require('./routes/api/resume/reference');
-const resumeProjRouter = require('./routes/api/resume/projects');
-const resumeTechRouter = require('./routes/api/resume/tech');
-const resumeSosRouter = require('./routes/api/resume/social');
+const resumeRouter = require('./routes/api/resume');
 // const blogRouter = require('./routes/api/private/blog');
 
 const app = express();
@@ -31,13 +24,6 @@ app.use('/api/user', userRouter);
 // app.use('/api/logo', logoRouter);
 // app.use('/api/about', aboutRouter);
 app.use('/api/resume', resumeRouter);
-app.use('/api/resume/pix', resumePixRouter);
-app.use('/api/resume/education', resumeEduRouter);
-app.use('/api/resume/professional', resumeProfRouter);
-app.use('/api/resume/reference', resumeRefRouter);
-app.use('/api/resume/projects', resumeProjRouter);
-app.use('/api/resume/tech', resumeTechRouter);
-app.use('/api/resume/social', resumeSosRouter);
 // app.use('/api/blog', blogRouter);
 
 app.get('*', (req, res) => {
