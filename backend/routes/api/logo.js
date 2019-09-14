@@ -1,7 +1,8 @@
 const express = require('express');
 const Logo = require('../../models/logo');
 const auth = require('../../middleware/auth');
-// const { uploadImage } = require('./utils/utils');
+const { uploadImage } = require('./utils/utils');
+const { multerUpload } = require('./utils/utils');
 
 const router = new express.Router();
 
@@ -41,16 +42,35 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.post('/logo', async (req, res) => {
-//   if (!req.file) {
-//     return res.status(406).json({ msg: 'Please upload a pictue' });
-//   }
-//   await uploadImage(req, res, 'logo', Logo, { _id: req.params.id });
-//   (error, req, res, next) => {
-//     res.status(400).json({
-//       error: error.message
-//     });
-//   };
-// });
+// enable multer settings
+const upload = multerUpload(1000000);
+
+// @router POST api/logo/pix
+// @desc post logo pix
+// @access PRIVATE
+router.post('/pix', auth, upload.single('upload'), async (req, res) => {
+  if (!req.file) {
+    return res.status(406).json({ msg: 'Please upload a pictue' });
+  }
+  await uploadImage(req, res, 'logo', Logo);
+  (error, req, res, next) => {
+    res.status(400).json({
+      error: error.message
+    });
+  };
+});
+
+// @router GET api/logo/pix
+// @desc get logo pix
+// @access PUBLIC
+router.get('/pix', async (req, res) => {
+  try {
+    const logo = await Logo.findOne();
+    res.set('Content-Type', 'image/jpg');
+    res.status(200).send(logo.logo);
+  } catch (error) {
+    res.status(400).json({ msg: 'Error' });
+  }
+});
 
 module.exports = router;
