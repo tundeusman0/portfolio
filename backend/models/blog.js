@@ -16,6 +16,12 @@ const BlogSchema = new mongoose.Schema({
   ]
 });
 
+BlogSchema.methods.toJSON = function() {
+  const blog = this;
+  const blogObject = blog.toObject();
+  delete blogObject.pix;
+  return blogObject;
+};
 const Blog = mongoose.model('Blog', BlogSchema);
 
 module.exports = Blog;

@@ -1,6 +1,8 @@
 const express = require('express');
 const auth = require('../../middleware/auth');
 const blog = require('./blogController/blog');
+const blogPix = require('./blogController/blogPix');
+const { multerUpload } = require('./utils/utils');
 
 const router = new express.Router();
 
@@ -23,5 +25,18 @@ router.delete('/:id', auth, blog.deleteBlog);
 // @desc update a blog
 // @access PRIVATE
 router.patch('/:id', auth, blog.updateBlog);
+
+// enable multer settings
+const upload = multerUpload(1000000);
+
+// @router POST api/blog/pix/id
+// @desc post a blog pix
+// @access PRIVATE
+router.post('/pix/:id', auth, upload.single('upload'), blogPix.postPix);
+
+// @router DELETE api/blog/pix/id
+// @desc delete a blog pix
+// @access PRIVATE
+router.get('/pix/:id', blogPix.getPix);
 
 module.exports = router;
