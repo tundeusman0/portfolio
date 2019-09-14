@@ -2,6 +2,7 @@ const express = require('express');
 const auth = require('../../middleware/auth');
 const blog = require('./blogController/blog');
 const blogPix = require('./blogController/blogPix');
+const blogComm = require('./blogController/blogComments');
 const { multerUpload } = require('./utils/utils');
 
 const router = new express.Router();
@@ -34,9 +35,14 @@ const upload = multerUpload(1000000);
 // @access PRIVATE
 router.post('/pix/:id', auth, upload.single('upload'), blogPix.postPix);
 
-// @router DELETE api/blog/pix/id
-// @desc delete a blog pix
-// @access PRIVATE
+// @router GET api/blog/pix/id
+// @desc get a blog pix
+// @access PUBLIC
 router.get('/pix/:id', blogPix.getPix);
+
+// @router POST api/blog/comment/id
+// @desc post a blog comment
+// @access PUBLIC
+router.post('/comment/:id', blogComm.postComment);
 
 module.exports = router;

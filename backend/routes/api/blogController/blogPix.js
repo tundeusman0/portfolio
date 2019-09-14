@@ -1,4 +1,4 @@
-const { uploadImage, getImage } = require('../utils/utils');
+const { uploadImage } = require('../utils/utils');
 
 const Blog = require('../../../models/blog');
 
