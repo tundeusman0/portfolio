@@ -1,0 +1,131 @@
+// import form
+// @import '../../pp.jpg';
+
+.body {
+  position: relative;
+  //   height: 600px;
+  //   display: flex;
+}
+.profilePix {
+  background: url('../../pp.jpg');
+  opacity: 0.6;
+  height: 1100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-info {
+  margin-top: 20px;
+  border-radius: 70px;
+  background: #142020c0;
+  padding: 10px;
+  color: $color3;
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: absolute;
+  top: 1%;
+  left: 4%;
+}
+.home-info h3 {
+  color: #ddebe6;
+}
+.home-status {
+  background: #142020c0;
+  border-radius: 50px;
+  padding: 10px;
+  color: #ddebe6;
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  //   transform: translate(-50%, -50%);
+}
+.status-field {
+  background: #04817b;
+  border-radius: 90px;
+  color: $color5;
+  font-family: fantasy;
+  padding: 20px;
+}
+.home-skills {
+  width: 800px;
+  border-radius: 60px;
+  position: absolute;
+  top: 500px;
+  left: 0%;
+  text-align: center;
+}
+.home-skills h1 {
+  width: 250px;
+  background: #142020c0;
+  border-radius: 20px;
+  color: whitesmoke;
+  padding: 20px;
+  margin-left: 300px;
+}
+.home-skills ul {
+  width: 300px;
+}
+.home-skills li:nth-child(even) {
+  background: #142020c0;
+  border-radius: 20px;
+  color: $color6;
+  color: #ddebe6;
+}
+
+.home-skills li:nth-child(odd) {
+  background: #02565cad;
+  border-radius: 20px;
+  color: white;
+}
+.home-skills ul li {
+  font-family: cursive;
+  font-size: 20px;
+  color: $color6;
+  display: flex;
+  width: 700px;
+  justify-content: space-between;
+  list-style-type: lower-roman;
+  height: 35px;
+  padding: 10px;
+  margin: 5px;
+}
+.skill-rating-con {
+  text-align: center;
+  margin-right: 10px;
+}
+
+// @media phone sizes
+@media only screen and (max-width: 767px) {
+  .profilePix {
+    height: 1100px;
+  }
+  .home-info {
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: absolute;
+    top: 0%;
+    left: 1%;
+    right: 4px;
+    z-index: 2;
+  }
+  .home-status {
+    width: 90%;
+    top: 40%;
+    left: 4%;
+  }
+  .home-skills {
+    top: 50%;
+    width: 100px;
+  }
+  .home-skills ul li {
+    width: 250px;
+  }
+  .home-skills h1 {
+    width: 180px;
+    margin-left: 50px;
+    padding: 10px;
+  }
+}
