@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 import './styles/style.scss';
+import './styles/form.css';
 // import App from './App';
 import AppRouter from './routers/AppRouter';
 import * as serviceWorker from './serviceWorker';

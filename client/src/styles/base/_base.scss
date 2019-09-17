@@ -1,16 +1,16 @@
 * {
   box-sizing: border-box;
 }
-
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: $backgroud;
-  padding: 0;
-  margin: 0;
+html {
   background: url('../../back.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 a {
