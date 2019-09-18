@@ -1,0 +1,237 @@
+.resume {
+  display: flex;
+  color: #071f1d;
+  font-weight: 300;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  background: $backgroud;
+}
+.resume h3 {
+  color: rgb(235, 130, 11);
+}
+.resume a {
+  color: #09bb77;
+}
+.resume h2 {
+  color: rgb(117, 8, 167);
+}
+
+// first section
+.resume-info {
+  flex: 2;
+  border-right: 20px black solid;
+}
+.resume-pix {
+  width: 150px;
+}
+.resume-pix > img {
+  width: 100%;
+  border-radius: 70px;
+}
+.resume-header {
+  margin: 10px;
+  display: flex;
+}
+.resume-header-info {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  margin-right: 20px;
+}
+.resume-header h1 {
+  color: #7ad9f5;
+  text-align: center;
+}
+.resume-header h2 {
+  text-align: center;
+  margin-left: 10px;
+  font-style: italic;
+}
+.resume-header h3 {
+  text-align: center;
+  margin-left: 20px;
+}
+.resume-header-edu-title h3 {
+  margin: 2px;
+}
+.resume-header-edu-title {
+  border-bottom: 2px solid black;
+  margin: 0 4px 4px 0;
+}
+.resume-header-edu {
+  border-top: 2px solid black;
+  margin: 0 4px 4px 0;
+}
+.resume-header-edu-item {
+  margin: 0;
+  margin: 0 20px 0 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.resume-edu-name {
+  display: flex;
+  flex-direction: column;
+}
+.resume-edu-date {
+  // width: 50px;
+}
+.resume-header-edu ul li {
+  display: flex;
+  list-style: none;
+}
+.resume-pro-certy {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.projects {
+  margin: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.proj-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+  margin-bottom: 2px;
+}
+.proj-details {
+  border-bottom: 2px solid black;
+  margin-bottom: 2px;
+}
+div.proj-details > div:first-child {
+  border-top: 2px solid black;
+  margin-top: 4px;
+}
+div.proj-details > div:last-child {
+  border-bottom: 2px solid black;
+  margin-bottom: 4px;
+}
+
+.proj-detail {
+  display: flex;
+  justify-content: space-between;
+}
+.proj-detail span {
+  margin: 0;
+  margin-right: 5px;
+}
+.proj-detail div {
+  padding: 2px;
+  border-right: 1px solid black;
+}
+.proj-detail-desc {
+  display: flex;
+  flex-direction: column;
+}
+.proj-detail-desc {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.profile-header {
+  border-bottom: 2px solid black;
+}
+.profile-header h3 {
+  margin: 2px;
+}
+.profile-header-details {
+  margin-top: 3px;
+  border-top: 3px solid black;
+}
+
+// second section
+.resume-details {
+  flex: 1;
+  padding: 10px;
+  margin-top: 30px;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+}
+.contact-header h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.contact-header {
+  margin-bottom: 4px;
+  border-bottom: 2px solid black;
+}
+.contact-details {
+  border-top: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+.contact-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px 20px 0;
+}
+
+.tech {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.tech h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.tech-header {
+  margin-bottom: 4px;
+  border-bottom: 2px solid black;
+}
+.tech-details {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid black;
+}
+
+.tech-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 20px 0;
+}
+.tech-detail i {
+  margin-right: 30px;
+  font-size: 20px;
+}
+.ref-details {
+  padding-top: 20px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid black;
+}
+.ref-detail {
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .resume {
+    font-weight: unset;
+    flex-direction: column;
+    border: none;
+  }
+  .resume-info {
+    flex: 1;
+    border-right: none;
+  }
+  .resume-details {
+    flex: 1;
+  }
+  .proj-detail span {
+    overflow: scroll;
+  }
+}
