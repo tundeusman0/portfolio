@@ -20,6 +20,7 @@ class Form extends Component {
       } else {
         this.setState({ msg: '' });
         console.log(userName, email, password, msg);
+        this.props.registerUser({ userName, email, password });
       }
     }
     if (this.props.formName === 'Login') {
