@@ -12,6 +12,7 @@ import Admin from '../components/admin/Admin';
 import Register from '../components/admin/Register';
 import Login from '../components/admin/Login';
 import User from '../components/admin/User';
+import { Provider } from 'react-redux';
 
 const AppRouter = () => (
   <Router>
