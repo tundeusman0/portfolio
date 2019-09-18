@@ -10,6 +10,7 @@ import Blog from '../components/Blog';
 import BlogPost from '../components/BlogPost';
 import Admin from '../components/admin/Admin';
 import Register from '../components/admin/Register';
+import Login from '../components/admin/Login';
 
 const AppRouter = () => (
   <Router>
@@ -23,6 +24,7 @@ const AppRouter = () => (
         <Route exact path="/chat" component={BlogPost} />
         <Route exact path="/admin/admin" component={Admin} />
         <Route exact path="/admin/register" component={Register} />
+        <Route exact path="/admin/login" component={Login} />
         <Route exact component={NoMatch} />
       </Switch>
       <Footer />

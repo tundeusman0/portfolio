@@ -22,7 +22,9 @@ class Form extends Component {
         console.log(userName, email, password, msg);
       }
     }
-    console.log(userName, email, password, msg);
+    if (this.props.formName === 'Login') {
+      console.log(userName, email, password);
+    }
   };
   render() {
     return (
@@ -35,20 +37,22 @@ class Form extends Component {
               <div className="row clearfix">
                 <div className="">
                   <form onSubmit={this.onSubmit}>
-                    <div className="input_field">
-                      <span>
-                        <i aria-hidden="true" className="fa fa-user"></i>
-                      </span>
-                      <input
-                        autoFocus={true}
-                        type="text"
-                        placeholder="userName"
-                        value={this.state.userName}
-                        onChange={this.onChange}
-                        name="userName"
-                        required
-                      />
-                    </div>
+                    {this.props.formName === 'Register' && (
+                      <div className="input_field">
+                        <span>
+                          <i aria-hidden="true" className="fa fa-user"></i>
+                        </span>
+                        <input
+                          autoFocus={true}
+                          type="text"
+                          placeholder="userName"
+                          value={this.state.userName}
+                          onChange={this.onChange}
+                          name="userName"
+                          required
+                        />
+                      </div>
+                    )}
                     <div className="input_field">
                       <span>
                         <i aria-hidden="true" className="fa fa-envelope"></i>
