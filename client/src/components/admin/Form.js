@@ -37,7 +37,8 @@ class Form extends Component {
               <div className="row clearfix">
                 <div className="">
                   <form onSubmit={this.onSubmit}>
-                    {this.props.formName === 'Register' && (
+                    {(this.props.formName === 'Register' ||
+                      this.props.formName === 'User Edit') && (
                       <div className="input_field">
                         <span>
                           <i aria-hidden="true" className="fa fa-user"></i>
@@ -66,19 +67,22 @@ class Form extends Component {
                         required
                       />
                     </div>
-                    <div className="input_field">
-                      <span>
-                        <i aria-hidden="true" className="fa fa-envelope"></i>
-                      </span>
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.onChange}
-                        name="password"
-                        required
-                      />
-                    </div>
+                    {(this.props.formName === 'Register' ||
+                      this.props.formName === 'Login') && (
+                      <div className="input_field">
+                        <span>
+                          <i aria-hidden="true" className="fa fa-envelope"></i>
+                        </span>
+                        <input
+                          type="password"
+                          placeholder="Password"
+                          value={this.state.password}
+                          onChange={this.onChange}
+                          name="password"
+                          required
+                        />
+                      </div>
+                    )}
                     {this.props.formName === 'Register' && (
                       <div className="input_field">
                         <span>

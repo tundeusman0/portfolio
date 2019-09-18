@@ -1,0 +1,27 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.User {
+  min-height: 20px;
+  height: auto;
+  min-width: 100px;
+  width: auto;
+  background: #09678b;
+  margin: 50px;
+  padding: 40px;
+}
+.User a {
+  color: white;
+  font-size: 40px;
+}
+.user-info {
+  color: azure;
+  font-size: 30px;
+}
+.User img {
+  width: 150px;
+  height: 150px;
+}
