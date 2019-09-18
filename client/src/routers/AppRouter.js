@@ -8,6 +8,8 @@ import Header from '../components/Header';
 import Resume from '../components/Resume';
 import Blog from '../components/Blog';
 import BlogPost from '../components/BlogPost';
+import Admin from '../components/admin/Admin';
+import Register from '../components/admin/Register';
 
 const AppRouter = () => (
   <Router>
@@ -19,6 +21,8 @@ const AppRouter = () => (
         <Route exact path="/resume" component={Resume} />
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/chat" component={BlogPost} />
+        <Route exact path="/admin/admin" component={Admin} />
+        <Route exact path="/admin/register" component={Register} />
         <Route exact component={NoMatch} />
       </Switch>
       <Footer />
