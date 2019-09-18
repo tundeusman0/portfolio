@@ -9,7 +9,7 @@ const Blog = () => {
       </div>
       <div className="blog-news">
         <div className="blog-new">
-          <a href="">
+          <a href="/">
             <p>
               The line-clamp property truncates text at a specific number of
               lines. The spec for it is currently an Editor's Draft.
@@ -17,7 +17,7 @@ const Blog = () => {
           </a>
         </div>
         <div className="blog-new">
-          <a href="">
+          <a href="/">
             <p>
               The line-clamp property truncates text at a specific number of
               lines. The spec for it is currently an Editor's Draft.
@@ -25,7 +25,7 @@ const Blog = () => {
           </a>
         </div>
         <div className="blog-new">
-          <a href="">
+          <a href="/">
             <p>
               The line-clamp property truncates text at a specific number of
               lines. The spec for it is currently an Editor's Draft.

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import DashBoard from '../components/DashBoard';
 import ContactForm from '../components/ContactForm';
 import NoMatch from '../components/NoMatch';
@@ -13,8 +14,10 @@ import Register from '../components/admin/Register';
 import Login from '../components/admin/Login';
 import User from '../components/admin/User';
 
+const history = createBrowserHistory();
+
 const AppRouter = () => (
-  <Router>
+  <Router history={history}>
     <div>
       <Header />
       <Switch>

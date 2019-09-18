@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Form extends Component {
   state = {
@@ -8,24 +9,35 @@ class Form extends Component {
     password2: '',
     msg: null
   };
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+    if (error !== prevProps.error) {
+      if (error.id === 'REGISTER_FAIL') {
+        this.setState({ msg: error.msg });
+      } else {
+        this.setState({ msg: null });
+        this.props.history.push('/admin/admin');
+      }
+    }
+  }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
   onSubmit = e => {
-    const { userName, email, password, password2, msg } = this.state;
+    const { userName, email, password, password2 } = this.state;
+    const user = { userName, email, password };
     e.preventDefault();
     if (this.props.formName === 'Register') {
       if (password !== password2) {
         this.setState({ msg: 'Password do not match' });
       } else {
-        this.setState({ msg: '' });
-        console.log(userName, email, password, msg);
-        this.props.registerUser({ userName, email, password });
+        this.props.submitForm(user);
+        // this.setState({ msg: '' });
       }
     }
-    if (this.props.formName === 'Login') {
-      console.log(userName, email, password);
-    }
+    // if (this.props.formName === 'Login') {
+    //   console.log(userName, email, password);
+    // }
   };
   render() {
     return (
@@ -114,4 +126,9 @@ class Form extends Component {
     );
   }
 }
-export default Form;
+
+const mapStateToProps = state => ({
+  error: state.authError
+});
+
+export default connect(mapStateToProps)(Form);

@@ -10,10 +10,15 @@ import configStore from './store/configStore';
 const store = configStore();
 
 class App extends React.Component {
+  componentDidMount() {
+    // store.dispatch({ type: 'LOADING' });
+  }
   render() {
     return (
       <Provider store={store}>
-        <AppRouter />
+        <div>
+          <AppRouter />
+        </div>
       </Provider>
     );
   }

@@ -1,12 +1,20 @@
 import axios from 'axios';
 
-export const registerUser = user => async dispatch => {
-  dispatch({ type: 'LOADING' });
-  console.log(user);
+export const registerUser = (payload = {}) => async dispatch => {
   try {
-    const res = axios.post('/', user);
-    console.log(res.data);
-  } catch (error) {
-    console.log(error.message);
+    const res = await axios.post('/api/user', payload);
+    dispatch({ type: 'REGISTER_SUCCESS', payload: res.data });
+    dispatch({ type: 'AUTH_SUCCESS' });
+  } catch (e) {
+    let msg = '',
+      status = '';
+    if (e.message === 'Request failed with status code 404') {
+      msg = 'Unable to register';
+      status = 404;
+    } else {
+      msg = 'Unable to register';
+      status = 400;
+    }
+    dispatch({ type: 'REGISTRATION_FAILED', status, msg, id: 'REGISTER_FAIL' });
   }
 };
