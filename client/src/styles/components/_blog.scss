@@ -1,0 +1,43 @@
+.blog {
+  display: flex;
+  flex-direction: column;
+  border-radius: 50px;
+  background: #035157;
+}
+
+.blog-header {
+  display: flex;
+  //   border: 2px #241901 solid;
+  border-radius: 50px;
+  min-height: 110px;
+  height: auto;
+}
+
+.blog-header h1 {
+  margin: 0 auto;
+  padding: 25px;
+  color: #33c207;
+}
+
+.blog-news {
+  padding: 50px;
+}
+.blog-new {
+  margin: 20px;
+  margin-top: 40px;
+  border-radius: 20px;
+  //   border: 2px #241901 solid;
+}
+.blog-new p {
+  font-size: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  color: white;
+}
+.blog-form {
+  text-align: center;
+  color: #33c207;
+}
+
+@media (max-width: 767px) {
+}

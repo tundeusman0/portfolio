@@ -6,6 +6,8 @@ import NoMatch from '../components/NoMatch';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Resume from '../components/Resume';
+import Blog from '../components/Blog';
+import BlogPost from '../components/BlogPost';
 
 const AppRouter = () => (
   <Router>
@@ -15,6 +17,8 @@ const AppRouter = () => (
         <Route exact path="/" component={DashBoard} />
         <Route exact path="/contact" component={ContactForm} />
         <Route exact path="/resume" component={Resume} />
+        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/chat" component={BlogPost} />
         <Route exact component={NoMatch} />
       </Switch>
       <Footer />
