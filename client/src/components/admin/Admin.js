@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logOut } from './../../actions/auth';
 
-const Admin = () => {
+const Admin = ({ logOut }) => {
   return (
     <div className="admin">
+      <button onClick={() => logOut()}>Log Out</button>
       <div className="User">
         <Link to="/admin/user">User</Link>
       </div>
@@ -20,4 +23,7 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default connect(
+  null,
+  { logOut }
+)(Admin);

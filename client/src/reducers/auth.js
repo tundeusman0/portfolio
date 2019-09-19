@@ -1,4 +1,6 @@
 import Cookie from 'js-cookie';
+
+console.log(Cookie.get('portfolio-Token'));
 const initialState = {
   isLoading: false,
   token: Cookie.get('portfolio-Token'),
@@ -11,25 +13,27 @@ export default (state = initialState, action) => {
     case 'LOADING':
       return {
         ...state,
-        loading: true
+        isLoading: true
       };
     case 'REGISTER_SUCCESS':
-      // case 'LOGIN_SUCCESS':
+    case 'LOGIN_SUCCESS':
       //   set cookie to expire in one day
       Cookie.set('portfolio-Token', action.payload.token);
       return {
         ...state,
-        loading: false,
+        authentication: true,
+        isLoading: false,
         user: action.payload.user
       };
 
     case 'REGISTER_FAIL':
-      //   case 'LOGIN_FAIL':
+    case 'LOGIN_FAIL':
+    case 'LOGOUT':
       Cookie.remove('portfolio-Token');
       return {
         ...state,
-        loading: false,
-        user: action.payload.user
+        authentication: false,
+        user: null
       };
     default:
       return state;

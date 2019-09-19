@@ -12,7 +12,7 @@ class Form extends Component {
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
-      if (error.id === 'REGISTER_FAIL') {
+      if (error.id === 'REGISTER_FAIL' || error.id === 'LOGIN_FAIL') {
         this.setState({ msg: error.msg });
       } else {
         this.setState({ msg: null });
@@ -26,18 +26,18 @@ class Form extends Component {
   onSubmit = e => {
     const { userName, email, password, password2 } = this.state;
     const user = { userName, email, password };
+    const login = { email, password };
     e.preventDefault();
     if (this.props.formName === 'Register') {
       if (password !== password2) {
         this.setState({ msg: 'Password do not match' });
       } else {
         this.props.submitForm(user);
-        // this.setState({ msg: '' });
       }
     }
-    // if (this.props.formName === 'Login') {
-    //   console.log(userName, email, password);
-    // }
+    if (this.props.formName === 'Login') {
+      this.props.submitForm(login);
+    }
   };
   render() {
     return (

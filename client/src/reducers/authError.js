@@ -7,6 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'REGISTRATION_FAILED':
+    case 'LOGIN_FAILED':
       return {
         ...state,
         status: action.status,

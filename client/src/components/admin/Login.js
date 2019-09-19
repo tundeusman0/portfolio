@@ -1,12 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Form from './Form';
+import { loginUser } from '../../actions/auth';
 
-const Login = () => {
+const Login = ({ loginUser, history }) => {
   return (
     <div>
-      <Form formName="Login" />
+      <Form
+        formName="Login"
+        history={history}
+        submitForm={user => loginUser(user)}
+      />
     </div>
   );
 };
 
-export default Login;
+export default connect(
+  null,
+  { loginUser }
+)(Login);
