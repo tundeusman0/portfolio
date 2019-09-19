@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
         user: action.payload.user
       };
     case 'EDIT_USER':
+    case 'EDIT_STATUS':
       return {
         ...state,
         user: {

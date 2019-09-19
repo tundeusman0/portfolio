@@ -33,7 +33,7 @@ export class User extends React.Component {
             //     </div>
             // </div>
           }
-          <Status />
+          <Status history={this.props.history} />
           <img src={pp} alt="home-pix" />
           <form onSubmit={this.formSubmit}>
             <input type="file" />
