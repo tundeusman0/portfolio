@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 class Form extends Component {
   state = {
-    userName: '',
-    email: '',
+    userName: this.props.editUser ? this.props.editUser.userName:'',
+    email: this.props.editUser ? this.props.editUser.email : '',
     password: '',
     password2: '',
     msg: null
@@ -12,7 +12,11 @@ class Form extends Component {
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
-      if (error.id === 'REGISTER_FAIL' || error.id === 'LOGIN_FAIL') {
+      if (
+        error.id === 'REGISTER_FAIL' ||
+        error.id === 'LOGIN_FAIL' ||
+        error.id === 'Edit Fail'
+      ) {
         this.setState({ msg: error.msg });
       } else {
         this.setState({ msg: null });
@@ -27,6 +31,7 @@ class Form extends Component {
     const { userName, email, password, password2 } = this.state;
     const user = { userName, email, password };
     const login = { email, password };
+    const edit = { userName, email };
     e.preventDefault();
     if (this.props.formName === 'Register') {
       if (password !== password2) {
@@ -37,6 +42,9 @@ class Form extends Component {
     }
     if (this.props.formName === 'Login') {
       this.props.submitForm(login);
+    }
+    if (this.props.formName === 'User Edit') {
+      this.props.submitForm(edit);
     }
   };
   render() {

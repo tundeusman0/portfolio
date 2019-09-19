@@ -31,6 +31,13 @@ export default (state = initialState, action) => {
         isLoading: false,
         user: action.payload.user
       };
+    case 'EDIT_USER':
+      return {
+        ...state,
+        user: {
+          ...action.payload
+        }
+      };
 
     case 'REGISTER_FAIL':
     case 'LOGIN_FAIL':
