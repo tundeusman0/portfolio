@@ -13,6 +13,7 @@ import Admin from '../components/admin/Admin';
 import Register from '../components/admin/Register';
 import Login from '../components/admin/Login';
 import User from '../components/admin/User';
+import PrivateRoute from './PrivateRoute';
 
 const history = createBrowserHistory();
 
@@ -26,10 +27,10 @@ const AppRouter = () => (
         <Route exact path="/resume" component={Resume} />
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/chat" component={BlogPost} />
-        <Route exact path="/admin/admin" component={Admin} />
+        <PrivateRoute exact path="/admin/admin" component={Admin} />
         <Route exact path="/admin/register" component={Register} />
         <Route exact path="/admin/login" component={Login} />
-        <Route exact path="/admin/user" component={User} />
+        <PrivateRoute exact path="/admin/user" component={User} />
         <Route exact component={NoMatch} />
       </Switch>
       <Footer />
