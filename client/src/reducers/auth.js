@@ -1,6 +1,5 @@
 import Cookie from 'js-cookie';
 
-console.log(Cookie.get('portfolio-Token'));
 const initialState = {
   isLoading: false,
   token: Cookie.get('portfolio-Token'),
@@ -14,6 +13,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true
+      };
+    case 'GET_USER':
+      return {
+        ...state,
+        isLoading: false,
+        authentication: true,
+        user: action.payload
       };
     case 'REGISTER_SUCCESS':
     case 'LOGIN_SUCCESS':

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import tokenConfig from '../selectors/tokenConfig';
 
 export const registerUser = (payload = {}) => async dispatch => {
   try {
@@ -39,6 +40,25 @@ export const loginUser = (payload = {}) => async dispatch => {
 };
 
 export const logOut = () => dispatch => {
-    console.log("log out")
+  console.log('log out');
   dispatch({ type: 'LOGOUT' });
+};
+
+export const getUser = () => async (dispatch, getState) => {
+  dispatch({ type: 'LOADING' });
+  try {
+    const res = await axios.get('/api/user', tokenConfig(getState));
+    dispatch({ type: 'GET_USER', payload: res.data });
+  } catch (e) {
+    let msg = '',
+      status = '';
+    if (e.message === 'Request failed with status code 404') {
+      msg = 'Unable to Login';
+      status = 404;
+    } else {
+      msg = 'Unable to Login';
+      status = 400;
+    }
+    dispatch({ type: 'LOGIN_FAILED', status, msg });
+  }
 };

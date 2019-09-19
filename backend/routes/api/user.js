@@ -13,6 +13,11 @@ const router = new express.Router();
 // @access Public
 router.post('/', user.createUser);
 
+// @route GET api/user
+// @desc get access to portfolio user
+// @access Private
+router.get('/', auth, user.userAdmin);
+
 // @route GET api/user/details
 // @desc get portfolio user details
 // @access Public

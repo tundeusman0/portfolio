@@ -19,6 +19,10 @@ exports.createUser = async (req, res) => {
   }
 };
 
+exports.userAdmin = async (req, res) => {
+  await getData(res, User);
+};
+
 exports.getUser = async (req, res) => {
   const details = await User.findOne();
   if (!details.isAdmin) {

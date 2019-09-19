@@ -14,6 +14,7 @@ import Register from '../components/admin/Register';
 import Login from '../components/admin/Login';
 import User from '../components/admin/User';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const history = createBrowserHistory();
 
@@ -29,7 +30,7 @@ const AppRouter = () => (
         <Route exact path="/chat" component={BlogPost} />
         <PrivateRoute exact path="/admin/admin" component={Admin} />
         <Route exact path="/admin/register" component={Register} />
-        <Route exact path="/admin/login" component={Login} />
+        <PublicRoute exact path="/admin/login" component={Login} />
         <PrivateRoute exact path="/admin/user" component={User} />
         <Route exact component={NoMatch} />
       </Switch>

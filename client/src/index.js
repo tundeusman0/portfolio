@@ -6,12 +6,13 @@ import AppRouter from './routers/AppRouter';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import configStore from './store/configStore';
+import { getUser } from './actions/auth';
 
 const store = configStore();
 
 class App extends React.Component {
   componentDidMount() {
-    // store.dispatch({ type: 'LOADING' });
+    store.dispatch(getUser());
   }
   render() {
     return (
