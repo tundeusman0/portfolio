@@ -47,17 +47,41 @@ export const postImage = (file = {}) => async (dispatch, getState) => {
   try {
     await axios.patch('/api/user/homePix', file, tokenConfig(getState));
     dispatch({
-      type: 'LOGIN_FAILED',
+      type: 'POST_SUCCESS',
       status: 0,
       msg: 'Pix Uploaded',
       id: 'Status Fail'
     });
   } catch (e) {
-    console.log(e);
     dispatch({
       type: 'LOGIN_FAILED',
       status: 400,
       msg: 'Unable to upload pix',
+      id: 'Status Fail'
+    });
+  }
+};
+
+export const postSkills = payload => async (dispatch, getState) => {
+  try {
+    const res = await axios.post(
+      '/api/user/skills',
+      payload,
+      tokenConfig(getState)
+    );
+    dispatch({ type: 'EDIT_STATUS', payload: res.data });
+    dispatch({ type: 'AUTH_SUCCESS' });
+    dispatch({
+      type: 'POST_SUCCESS',
+      status: 0,
+      msg: 'Skill Posted',
+      id: 'Status Fail'
+    });
+  } catch (e) {
+    dispatch({
+      type: 'LOGIN_FAILED',
+      status: 400,
+      msg: 'Unable to Skill',
       id: 'Status Fail'
     });
   }

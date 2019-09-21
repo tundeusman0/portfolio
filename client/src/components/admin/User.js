@@ -92,7 +92,31 @@ export class User extends React.Component {
             </div>
           </div>
 
-          <Link to={`/edit-skills/`}>Skills</Link>
+          <div>Skills</div>
+          <Link to={'/admin/skills'}>Post Skills</Link>
+
+          <div>
+            {this.props.skills ? (
+              <ul>
+                {this.props.skills.map((skill, ind) => (
+                  <li key={ind}>
+                    <Link to={`/admin/skills/${skill._id}`}>
+                      {skill.skill} <span>{skill.rating}</span>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        console.log('deleted skill');
+                      }}
+                    >
+                      Delete Skill
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No Skills</p>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -100,7 +124,8 @@ export class User extends React.Component {
 }
 const mapStateToProps = state => ({
   email: state.auth.user.email,
-  userName: state.auth.user.userName
+  userName: state.auth.user.userName,
+  skills: state.auth.user.skills
 });
 
 export default connect(

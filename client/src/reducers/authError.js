@@ -8,6 +8,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case 'REGISTRATION_FAILED':
     case 'LOGIN_FAILED':
+    case 'POST_SUCCESS':
       return {
         ...state,
         status: action.status,
