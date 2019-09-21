@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Status from './Status';
 import Form from './Form';
-import { editUser, postImage } from '../../actions/user';
+import { editUser, postImage, deleteSkills } from '../../actions/user';
 import { connect } from 'react-redux';
 
 export class User extends React.Component {
@@ -103,11 +103,7 @@ export class User extends React.Component {
                     <Link to={`/admin/skills/${skill._id}`}>
                       {skill.skill} <span>{skill.rating}</span>
                     </Link>
-                    <button
-                      onClick={() => {
-                        console.log('deleted skill');
-                      }}
-                    >
+                    <button onClick={() => this.props.deleteSkills(skill._id)}>
                       Delete Skill
                     </button>
                   </li>
@@ -130,5 +126,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editUser, postImage }
+  { editUser, postImage, deleteSkills }
 )(User);

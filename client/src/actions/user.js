@@ -49,8 +49,7 @@ export const postImage = (file = {}) => async (dispatch, getState) => {
     dispatch({
       type: 'POST_SUCCESS',
       status: 0,
-      msg: 'Pix Uploaded',
-      id: 'Status Fail'
+      msg: 'Pix Uploaded'
     });
   } catch (e) {
     dispatch({
@@ -69,19 +68,41 @@ export const postSkills = payload => async (dispatch, getState) => {
       payload,
       tokenConfig(getState)
     );
-    dispatch({ type: 'EDIT_STATUS', payload: res.data });
+    dispatch({ type: 'EDIT_SKILL', payload: res.data });
     dispatch({ type: 'AUTH_SUCCESS' });
     dispatch({
       type: 'POST_SUCCESS',
       status: 0,
-      msg: 'Skill Posted',
-      id: 'Status Fail'
+      msg: 'Skill Posted'
     });
   } catch (e) {
     dispatch({
       type: 'LOGIN_FAILED',
       status: 400,
       msg: 'Unable to Skill',
+      id: 'Status Fail'
+    });
+  }
+};
+
+export const deleteSkills = id => async (dispatch, getState) => {
+  try {
+    const res = await axios.delete(
+      `/api/user/skills/${id}`,
+      tokenConfig(getState)
+    );
+    dispatch({ type: 'DELETE_SKILL', payload: res.data });
+    dispatch({ type: 'AUTH_SUCCESS' });
+    dispatch({
+      type: 'POST_SUCCESS',
+      status: 0,
+      msg: 'Skill Deleted'
+    });
+  } catch (e) {
+    dispatch({
+      type: 'LOGIN_FAILED',
+      status: 400,
+      msg: 'Unable to Delete Skill',
       id: 'Status Fail'
     });
   }
