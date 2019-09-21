@@ -42,3 +42,23 @@ export const editStatus = (payload = {}) => async (dispatch, getState) => {
     dispatch({ type: 'LOGIN_FAILED', status, msg, id: 'Status Fail' });
   }
 };
+
+export const postImage = (file = {}) => async (dispatch, getState) => {
+  try {
+    await axios.patch('/api/user/homePix', file, tokenConfig(getState));
+    dispatch({
+      type: 'LOGIN_FAILED',
+      status: 0,
+      msg: 'Pix Uploaded',
+      id: 'Status Fail'
+    });
+  } catch (e) {
+    console.log(e);
+    dispatch({
+      type: 'LOGIN_FAILED',
+      status: 400,
+      msg: 'Unable to upload pix',
+      id: 'Status Fail'
+    });
+  }
+};

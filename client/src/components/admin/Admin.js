@@ -10,7 +10,7 @@ const Admin = ({ logOut, error }) => {
   return (
     <div className="admin">
       {state.msg && (
-        <p style={{ 'font-size': '20px', color: 'white' }}>{state.msg}</p>
+        <p style={{ fontSize: '20px', color: 'white' }}>{state.msg}</p>
       )}
       <button onClick={() => logOut()}>Log Out</button>
       <div className="User">

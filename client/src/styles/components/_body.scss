@@ -1,15 +1,10 @@
-// import form
-// @import '../../pp.jpg';
-
 .body {
   position: relative;
-  //   height: 600px;
-  //   display: flex;
 }
+
 .profilePix {
-  background: url('../../pp.jpg');
+  background: url('/api/user/homePix');
   border-radius: 70px;
-    // opacity: 0.9;
   margin: 5px;
   height: 1100px;
   background-position: center;

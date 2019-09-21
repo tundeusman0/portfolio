@@ -16,7 +16,9 @@ exports.updateUserPix = async (req, res) => {
 exports.getUserPix = async (req, res) => {
   const user = await User.findOne();
   if (!user.isAdmin) {
-    throw new Error();
+    return res.status(400).json({
+      error: 'error.message'
+    });
   }
   await getImage(res, User, 'homePix');
 };
