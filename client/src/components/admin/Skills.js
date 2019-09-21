@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postSkills, deleteSkills, updateSkills } from '../../actions/user';
+import { postSkills, updateSkills } from '../../actions/skills';
 
 class Skills extends React.Component {
   state = {
@@ -79,5 +79,5 @@ class Skills extends React.Component {
 
 export default connect(
   null,
-  { postSkills, deleteSkills, updateSkills }
+  { postSkills, updateSkills }
 )(Skills);

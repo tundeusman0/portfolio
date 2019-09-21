@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Status from './Status';
 import Form from './Form';
-import { editUser, postImage, deleteSkills } from '../../actions/user';
+import { editUser, postImage } from '../../actions/user';
+import { deleteSkills } from '../../actions/skills';
 import { connect } from 'react-redux';
 import Skills from './Skills';
 
