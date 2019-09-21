@@ -35,19 +35,13 @@ export default (state = initialState, action) => {
     case 'EDIT_STATUS':
     case 'EDIT_SKILL':
     case 'DELETE_SKILL':
+    case 'UPDATE_SKILL':
       return {
         ...state,
         user: {
           ...action.payload
         }
       };
-    // case "DELETE_SKILL":
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...
-    //     }
-    // }
 
     case 'REGISTER_FAIL':
     case 'LOGIN_FAIL':

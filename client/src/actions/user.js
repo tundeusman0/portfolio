@@ -107,3 +107,27 @@ export const deleteSkills = id => async (dispatch, getState) => {
     });
   }
 };
+
+export const updateSkills = payload => async (dispatch, getState) => {
+  try {
+    const res = await axios.patch(
+      `/api/user/skills/${payload.id}`,
+      payload.skills,
+      tokenConfig(getState)
+    );
+    dispatch({ type: 'UPDATE_SKILL', payload: res.data });
+    dispatch({ type: 'AUTH_SUCCESS' });
+    dispatch({
+      type: 'POST_SUCCESS',
+      status: 0,
+      msg: 'Skill Updated'
+    });
+  } catch (e) {
+    dispatch({
+      type: 'LOGIN_FAILED',
+      status: 400,
+      msg: 'Unable to Update Skill',
+      id: 'Status Fail'
+    });
+  }
+};

@@ -4,6 +4,7 @@ import Status from './Status';
 import Form from './Form';
 import { editUser, postImage, deleteSkills } from '../../actions/user';
 import { connect } from 'react-redux';
+import Skills from './Skills';
 
 export class User extends React.Component {
   state = {
@@ -93,7 +94,8 @@ export class User extends React.Component {
           </div>
 
           <div>Skills</div>
-          <Link to={'/admin/skills'}>Post Skills</Link>
+          <div>Post Skills</div>
+          <Skills formName="Post Skill" history={this.props.history} />
 
           <div>
             {this.props.skills ? (
