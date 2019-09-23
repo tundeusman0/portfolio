@@ -56,18 +56,7 @@ export class User extends React.Component {
             history={this.props.history}
             submitForm={user => this.props.editUser(user)}
           />
-          {
-            // <div className="form_wrapper">
-            //     <div className="form_container">
-            //         <div className="title_container">
-            //             <div className="row clearfix">
-            //                 <div className="">
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>
-          }
+
           <Status history={this.props.history} />
 
           <div className="form_wrapper" style={{ margin: 5 }}>
@@ -94,8 +83,6 @@ export class User extends React.Component {
             </div>
           </div>
 
-          <div>Skills</div>
-          <div>Post Skills</div>
           <Skills formName="Post Skill" history={this.props.history} />
 
           <div>
