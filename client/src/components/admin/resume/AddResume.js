@@ -2,11 +2,19 @@ import React from 'react';
 import Form from './Form';
 import { addResume } from '../../../actions/resume';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const AddResume = ({ addResume, history }) => {
   return (
     <div>
-      <Form formName="Add Resume" history={history} submitForm={resume => addResume(resume)} />
+      <Link className="link" to="/admin/resume">
+        Back to Admin User
+      </Link>
+      <Form
+        formName="Add Resume"
+        history={history}
+        submitForm={resume => addResume(resume)}
+      />
     </div>
   );
 };

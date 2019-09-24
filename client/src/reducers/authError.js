@@ -9,7 +9,8 @@ export default (state = initialState, action) => {
     case 'REGISTRATION_FAILED':
     case 'LOGIN_FAILED':
     case 'POST_SUCCESS':
-    case 'ADD_RESUME_ERROR':
+    case 'POST_SUCCESS_MSG':
+    case 'RESUME_ERROR':
       return {
         ...state,
         status: action.status,

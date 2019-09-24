@@ -16,3 +16,23 @@ body {
 a {
   text-decoration: none;
 }
+
+.link {
+  background: #035c54;
+  color: whitesmoke;
+  font-size: 25px;
+  margin: 10px;
+  padding: 10px;
+}
+.link:hover {
+  color: #130218;
+}
+
+.arrange {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.arrange a {
+  margin: 8px;
+}

@@ -3,15 +3,19 @@ import { connect } from 'react-redux';
 
 class Form extends Component {
   state = {
-    about: '',
-    experience: '',
-    carrerGoal: '',
-    name: '',
-    jobTitle: '',
-    addTitle: '',
-    phone: '',
-    email: '',
-    location: '',
+    about: this.props.resume ? this.props.resume.personalProfile.about : '',
+    experience: this.props.resume
+      ? this.props.resume.personalProfile.experience
+      : '',
+    carrerGoal: this.props.resume
+      ? this.props.resume.personalProfile.carrerGoal
+      : '',
+    name: this.props.resume ? this.props.resume.details.name : '',
+    jobTitle: this.props.resume ? this.props.resume.details.jobTitle : '',
+    addTitle: this.props.resume ? this.props.resume.details.addTitle : '',
+    phone: this.props.resume ? this.props.resume.contact.phone : '',
+    email: this.props.resume ? this.props.resume.contact.email : '',
+    location: this.props.resume ? this.props.resume.contact.location : '',
     msg: null
   };
   componentDidUpdate(prevProps) {
@@ -22,7 +26,6 @@ class Form extends Component {
       } else {
         this.setState({ msg: null });
         this.props.history.push('/admin/resume');
-        console.log("push oh")
       }
     }
   }
@@ -53,7 +56,11 @@ class Form extends Component {
       location
     };
     e.preventDefault();
-    this.props.submitForm(resume);
+    if (this.props.formName === 'Edit form') {
+      this.props.submitForm(resume);
+    } else {
+      this.props.submitForm(resume);
+    }
   };
   render() {
     return (
@@ -80,7 +87,7 @@ class Form extends Component {
                               autoFocus={true}
                               type="text"
                               placeholder={element}
-                              value={this.state.element}
+                              value={this.state[element]}
                               onChange={this.onChange}
                               name={element}
                               required
