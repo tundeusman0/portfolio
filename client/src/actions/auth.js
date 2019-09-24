@@ -48,7 +48,9 @@ export const getUser = () => async (dispatch, getState) => {
   dispatch({ type: 'LOADING' });
   try {
     const res = await axios.get('/api/user', tokenConfig(getState));
+    const resume = await axios.get('/api/resume');
     dispatch({ type: 'GET_USER', payload: res.data });
+    dispatch({ type: 'GET_RESUME', payload: resume.data });
   } catch (e) {
     let msg = '',
       status = '';

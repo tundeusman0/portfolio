@@ -16,6 +16,9 @@ import User from '../components/admin/User';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Skills from '../components/admin/Skills';
+import AdminResume from '../components/admin/resume/Resume';
+import AddResume from '../components/admin/resume/AddResume';
+import EditResume from '../components/admin/resume/EditResume';
 import EditSkills from '../components/admin/EditSkills';
 
 const history = createBrowserHistory();
@@ -35,6 +38,9 @@ const AppRouter = () => (
         <PublicRoute exact path="/admin/login" component={Login} />
         <PrivateRoute exact path="/admin/user" component={User} />
         <PrivateRoute exact path="/admin/skills" component={Skills} />
+        <PrivateRoute exact path="/admin/resume" component={AdminResume} />
+        <PrivateRoute exact path="/admin/add_resume" component={AddResume} />
+        <PrivateRoute exact path="/admin/edit_resume" component={EditResume} />
         <PrivateRoute exact path="/admin/skills/:id" component={EditSkills} />
         <Route exact component={NoMatch} />
       </Switch>
