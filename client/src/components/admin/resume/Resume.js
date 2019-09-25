@@ -6,6 +6,7 @@ import { postImage } from '../../../actions/resume/resume';
 import ResumeEdu from './ResumeEdu';
 import ResumeProf from './ResumeProf';
 import ResumeRef from './ResumeRef';
+import ResumeProjects from './ResumeProjects';
 
 class Resume extends React.Component {
   state = {
@@ -43,6 +44,7 @@ class Resume extends React.Component {
         <ResumeEdu history={this.props.history} />
         <ResumeProf history={this.props.history} />
         <ResumeRef history={this.props.history} />
+        <ResumeProjects history={this.props.history} />
       </div>
     );
   }
