@@ -21,6 +21,16 @@ export default (state = initialState, action) => {
           education: state.resume.education.filter(edu => action.id !== edu._id)
         }
       };
+    case 'DELETE_PROF':
+      return {
+        ...state,
+        resume: {
+          ...state.resume,
+          proffesionalBody: state.resume.proffesionalBody.filter(
+            prof => action.id !== prof._id
+          )
+        }
+      };
     default:
       return state;
   }

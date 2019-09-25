@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import OtherForm from './OtherForm';
-import { postProf } from '../../../actions/resume/ResumeProf';
+import { postProf, deleteProf } from '../../../actions/resume/ResumeProf';
 
-const ResumeProf = ({ postProf, profs, history }) => {
+const ResumeProf = ({ postProf, profs, history, deleteProf }) => {
   return (
     <div className="User" style={{ marginTop: '0', marginBottom: '0' }}>
       <OtherForm
@@ -18,8 +18,8 @@ const ResumeProf = ({ postProf, profs, history }) => {
               <li key={ind} className="list-item">
                 {prof.name} <span> {prof.certy}</span> date:
                 <span>{prof.date}</span>
-                <button onClick={() => this.deleteprof(prof._id)}>
-                  Delete Educational History
+                <button onClick={() => deleteProf(prof._id)}>
+                  Delete Professional Certificate
                 </button>
               </li>
             ))}
@@ -38,5 +38,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postProf }
+  { postProf, deleteProf }
 )(ResumeProf);
