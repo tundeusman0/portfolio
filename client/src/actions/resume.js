@@ -46,3 +46,23 @@ export const editResume = payload => async (dispatch, getState) => {
     });
   }
 };
+
+export const postImage = (file = {}) => async (dispatch, getState) => {
+  try {
+    await axios.patch('/api/resume/pix', file, tokenConfig(getState));
+    dispatch({ type: 'RESUME_SUCCESS' });
+    dispatch({
+      type: 'POST_SUCCESS_MSG',
+      status: 200,
+      id: 'MSG',
+      msg: 'RESUME PIX UPDATED'
+    });
+  } catch (e) {
+    dispatch({
+      type: 'RESUME_ERROR',
+      status: 400,
+      msg: 'Unable to update Resume Pix',
+      id: 'Resume Fail'
+    });
+  }
+};

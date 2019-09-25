@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import ResumePix from '../UploadPix';
+import { postImage } from '../../../actions/resume';
 
 class Resume extends React.Component {
   state = {
@@ -9,13 +11,13 @@ class Resume extends React.Component {
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
-      if (error.id === 'MSG') {
+      if (error.id === 'MSG' || error.status === 400) {
         this.setState({ msg: error.msg });
       }
     }
   }
   componentDidMount() {
-    this.Interval = setInterval(() => this.setState({ msg: '' }), 4000);
+    this.Interval = setInterval(() => this.setState({ msg: '' }), 5000);
   }
   componentWillUnmount() {
     clearInterval(this.Interval);
@@ -27,6 +29,11 @@ class Resume extends React.Component {
         <Link to="/admin/admin">Back to Admin User</Link>
         <Link to="/admin/add_resume">Add Resume</Link>
         <Link to="/admin/edit_resume">Edit Resume</Link>
+        <ResumePix
+          pixSrc={'/api/resume/pix'}
+          formName="Update Pix"
+          postImage={this.props.postImage}
+        />
       </div>
     );
   }
@@ -36,4 +43,7 @@ const mapStateToProps = state => ({
   error: state.authError
 });
 
-export default connect(mapStateToProps)(Resume);
+export default connect(
+  mapStateToProps,
+  { postImage }
+)(Resume);
