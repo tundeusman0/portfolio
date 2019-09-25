@@ -9,17 +9,7 @@ import Header from '../components/Header';
 import Resume from '../components/Resume';
 import Blog from '../components/Blog';
 import BlogPost from '../components/BlogPost';
-import Admin from '../components/admin/Admin';
-import Register from '../components/admin/Register';
-import Login from '../components/admin/Login';
-import User from '../components/admin/User';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
-import Skills from '../components/admin/Skills';
-import AdminResume from '../components/admin/resume/Resume';
-import AddResume from '../components/admin/resume/AddResume';
-import EditResume from '../components/admin/resume/EditResume';
-import EditSkills from '../components/admin/EditSkills';
+import AdminRouters from './AdminRouters';
 
 const history = createBrowserHistory();
 
@@ -33,15 +23,7 @@ const AppRouter = () => (
         <Route exact path="/resume" component={Resume} />
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/chat" component={BlogPost} />
-        <PrivateRoute exact path="/admin/admin" component={Admin} />
-        <Route exact path="/admin/register" component={Register} />
-        <PublicRoute exact path="/admin/login" component={Login} />
-        <PrivateRoute exact path="/admin/user" component={User} />
-        <PrivateRoute exact path="/admin/skills" component={Skills} />
-        <PrivateRoute exact path="/admin/resume" component={AdminResume} />
-        <PrivateRoute exact path="/admin/add_resume" component={AddResume} />
-        <PrivateRoute exact path="/admin/edit_resume" component={EditResume} />
-        <PrivateRoute exact path="/admin/skills/:id" component={EditSkills} />
+        <AdminRouters />
         <Route exact component={NoMatch} />
       </Switch>
       <Footer />
