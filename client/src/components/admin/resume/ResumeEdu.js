@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import OtherForm from './OtherForm';
-import { postEdu, deleteEdu } from '../../../actions/resume/resume';
+import { postEdu, deleteEdu } from '../../../actions/resume/resumeEdu';
 
 const ResumeEdu = ({ postEdu, edus, history, deleteEdu }) => {
   return (
