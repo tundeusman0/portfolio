@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ResumePix from '../UploadPix';
 import { postImage } from '../../../actions/resume/resume';
 import ResumeEdu from './ResumeEdu';
+import ResumeProf from './ResumeProf';
 
 class Resume extends React.Component {
   state = {
@@ -25,7 +26,10 @@ class Resume extends React.Component {
   }
   render() {
     return (
-      <div className="User arrange">
+      <div
+        className="User arrange"
+        style={{ marginTop: '0', marginBottom: '0' }}
+      >
         {this.state.msg && <h2>{this.state.msg}</h2>}
         <Link to="/admin/admin">Back to Admin User</Link>
         <Link to="/admin/add_resume">Add Resume</Link>
@@ -36,6 +40,7 @@ class Resume extends React.Component {
           postImage={this.props.postImage}
         />
         <ResumeEdu history={this.props.history} />
+        <ResumeProf history={this.props.history} />
       </div>
     );
   }
