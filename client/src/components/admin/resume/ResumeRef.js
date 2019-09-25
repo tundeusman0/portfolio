@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postRef } from '../../../actions/resume/ResumeRef';
+import { postRef, deleteRef } from '../../../actions/resume/ResumeRef';
 
 class ResumeProf extends React.Component {
   state = {
@@ -37,7 +37,7 @@ class ResumeProf extends React.Component {
           <div className="form_container">
             <div className="title_container">
               {this.state.msg && <p>{this.state.msg}</p>}
-              <h2>{this.props.formName}</h2>
+              <h2>{'Reference'}</h2>
               <div className="row clearfix">
                 <div className="">
                   <form onSubmit={this.onSubmit}>
@@ -66,7 +66,7 @@ class ResumeProf extends React.Component {
                     <input
                       className="button"
                       type="submit"
-                      value={this.props.formName}
+                      value={'Post Reference'}
                     />
                   </form>
                 </div>
@@ -83,7 +83,7 @@ class ResumeProf extends React.Component {
                   Name: {ref.name} POST: <span> {ref.post}</span>
                   Work Place: <span>{ref.workPlace}</span>
                   Email: <span>{ref.email}</span>
-                  <button onClick={() => this.deleteRef(ref._id)}>
+                  <button onClick={() => this.props.deleteRef(ref._id)}>
                     Delete Professional Certificate
                   </button>
                 </li>
@@ -105,5 +105,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postRef }
+  { postRef, deleteRef }
 )(ResumeProf);

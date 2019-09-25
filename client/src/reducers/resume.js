@@ -31,6 +31,16 @@ export default (state = initialState, action) => {
           )
         }
       };
+    case 'DELETE_REF':
+      return {
+        ...state,
+        resume: {
+          ...state.resume,
+          reference: state.resume.reference.filter(
+            prof => action.id !== prof._id
+          )
+        }
+      };
     default:
       return state;
   }
