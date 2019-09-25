@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './Form';
-import { addResume } from '../../../actions/resume';
+import { addResume } from '../../../actions/resume/resume';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 

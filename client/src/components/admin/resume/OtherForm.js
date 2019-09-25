@@ -33,7 +33,6 @@ class OtherForm extends Component {
       to
     };
     e.preventDefault();
-    console.log(edu);
     if (this.props.formName === 'Post Edu') {
       this.props.submitForm(edu);
     }

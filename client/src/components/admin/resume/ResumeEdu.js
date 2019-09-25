@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import OtherForm from './OtherForm';
-import { postEdu } from '../../../actions/resume';
+import { postEdu, deleteEdu } from '../../../actions/resume/resume';
 
-const ResumeEdu = ({ postEdu, edus, history }) => {
+const ResumeEdu = ({ postEdu, edus, history, deleteEdu }) => {
   return (
     <div className="User">
       <OtherForm
@@ -17,14 +16,9 @@ const ResumeEdu = ({ postEdu, edus, history }) => {
           <ul>
             {edus.map((edu, ind) => (
               <li key={ind} className="list-item">
-                <Link
-                  style={{ fontSize: '18px' }}
-                  to={`/admin/skills/${edu._id}`}
-                >
-                  {edu.school} <span>{edu.grade}</span> from:
-                  <span>{edu.date.started}</span> to:<span>{edu.date.to}</span>
-                </Link>
-                <button onClick={() => this.props.deleteSkills(edu._id)}>
+                {edu.school} <span>{edu.grade}</span> from:
+                <span>{edu.date.started}</span> to:<span>{edu.date.to}</span>
+                <button onClick={() => deleteEdu(edu._id)}>
                   Delete Educational History
                 </button>
               </li>
@@ -44,5 +38,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postEdu }
+  { postEdu, deleteEdu }
 )(ResumeEdu);

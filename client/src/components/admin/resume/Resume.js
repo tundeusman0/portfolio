@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ResumePix from '../UploadPix';
-import { postImage } from '../../../actions/resume';
-import ResumeEdu from "./ResumeEdu"
+import { postImage } from '../../../actions/resume/resume';
+import ResumeEdu from './ResumeEdu';
 
 class Resume extends React.Component {
   state = {

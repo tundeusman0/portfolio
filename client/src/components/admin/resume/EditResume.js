@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './Form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { editResume } from './../../../actions/resume';
+import { editResume } from './../../../actions/resume/resume';
 
 const EditResume = ({ resume, history, editResume }) => {
   return (
