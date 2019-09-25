@@ -28,6 +28,15 @@ a {
   color: #130218;
 }
 
+.list-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item a {
+  font-size: 18px;
+}
+
 .arrange {
   display: flex;
   flex-direction: column;

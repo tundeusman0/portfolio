@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ResumePix from '../UploadPix';
 import { postImage } from '../../../actions/resume';
+import ResumeEdu from "./ResumeEdu"
 
 class Resume extends React.Component {
   state = {
@@ -34,6 +35,7 @@ class Resume extends React.Component {
           formName="Update Pix"
           postImage={this.props.postImage}
         />
+        <ResumeEdu history={this.props.history} />
       </div>
     );
   }
