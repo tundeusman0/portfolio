@@ -5,6 +5,7 @@ import ResumePix from '../UploadPix';
 import { postImage } from '../../../actions/resume/resume';
 import ResumeEdu from './ResumeEdu';
 import ResumeProf from './ResumeProf';
+import ResumeRef from './ResumeRef';
 
 class Resume extends React.Component {
   state = {
@@ -41,6 +42,7 @@ class Resume extends React.Component {
         />
         <ResumeEdu history={this.props.history} />
         <ResumeProf history={this.props.history} />
+        <ResumeRef history={this.props.history} />
       </div>
     );
   }
