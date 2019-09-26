@@ -1,9 +1,15 @@
 import axios from 'axios';
 import tokenConfig from './tokenConfig';
 
-export const updateAction = async (payload, api, getState, dispatch) => {
+export const updateAction = async (
+  payload,
+  api,
+  getState,
+  dispatch,
+  method = 'patch'
+) => {
   try {
-    const res = await axios.patch(api, payload, tokenConfig(getState));
+    const res = await axios[method](api, payload, tokenConfig(getState));
     dispatch({ type: 'EDIT_RESUME', payload: res.data });
     dispatch({ type: 'RESUME_SUCCESS' });
     dispatch({
