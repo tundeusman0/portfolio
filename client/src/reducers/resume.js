@@ -13,24 +13,6 @@ export default (state = initialState, action) => {
         resume: action.payload,
         isLoading: false
       };
-    case 'DELETE_REF':
-      return {
-        ...state,
-        resume: {
-          ...state.resume,
-          reference: state.resume.reference.filter(
-            prof => action.id !== prof._id
-          )
-        }
-      };
-    case 'DELETE_PROJECT':
-      return {
-        ...state,
-        resume: {
-          ...state.resume,
-          projects: state.resume.projects.filter(proj => action.id !== proj._id)
-        }
-      };
     case 'DELETE_RESUMES':
       const resumeName = action.resumeName;
       return {
