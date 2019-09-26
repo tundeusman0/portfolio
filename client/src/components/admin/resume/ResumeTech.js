@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postTech } from '../../../actions/resume/ResumeTech';
+import { postTech, deleteTech } from '../../../actions/resume/ResumeTech';
 
 class ResumeTech extends React.Component {
   state = {
@@ -77,7 +77,7 @@ class ResumeTech extends React.Component {
                   Name: {tec.name} <div></div> Ability:{' '}
                   <span> {tec.ability}</span>
                   <div></div>logo: <span>{tec.logo}</span>
-                  <button onClick={() => this.deletetec(tec._id)}>
+                  <button onClick={() => this.props.deleteTech(tec._id)}>
                     Delete Tech
                   </button>
                 </li>
@@ -99,5 +99,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postTech }
+  { postTech, deleteTech }
 )(ResumeTech);

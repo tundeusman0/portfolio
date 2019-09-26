@@ -49,6 +49,17 @@ export default (state = initialState, action) => {
           projects: state.resume.projects.filter(proj => action.id !== proj._id)
         }
       };
+    case 'DELETE_RESUMES':
+      const resumeName = action.resumeName;
+      return {
+        ...state,
+        resume: {
+          ...state.resume,
+          [resumeName]: state.resume[resumeName].filter(
+            resume => action.id !== resume._id
+          )
+        }
+      };
     default:
       return state;
   }
