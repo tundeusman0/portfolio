@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postRef } from '../../../actions/resume/ResumeRef';
+import { updateProjects } from '../../../actions/resume/ResumeProj';
 
 class ResumeProf extends React.Component {
   state = {
-    name: '',
-    desc: '',
-    link: '',
-    codeLink: '',
-    tech: ''
+    name: this.props.projects ? this.props.projects.name : '',
+    desc: this.props.projects ? this.props.projects.details.desc : '',
+    link: this.props.projects ? this.props.projects.details.link : '',
+    codeLink: this.props.projects ? this.props.projects.details.codeLink : '',
+    tech: this.props.projects ? this.props.projects.tech : '',
+    msg: '',
+    id: this.props.id && this.props.id
   };
   componentDidUpdate(prevProps) {
     const { error } = this.props;
@@ -26,9 +28,13 @@ class ResumeProf extends React.Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    const { name, desc, link, codeLink, tech } = this.state;
+    const { name, desc, link, codeLink, tech, id } = this.state;
     const proj = { name, desc, link, codeLink, tech };
-    this.props.submitForm(proj);
+    if (this.props.formName === 'Edit Project') {
+      this.props.updateProjects({ id, proj });
+    } else {
+      this.props.submitForm(proj);
+    }
   };
   render() {
     return (
@@ -43,7 +49,8 @@ class ResumeProf extends React.Component {
                   <form onSubmit={this.onSubmit}>
                     {Object.keys(this.state).map(
                       (element, index) =>
-                        element !== 'msg' && (
+                        element !== 'msg' &&
+                        element !== 'id' && (
                           <div key={index} className="input_field">
                             <span>
                               <i
@@ -85,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postRef }
+  { updateProjects }
 )(ResumeProf);

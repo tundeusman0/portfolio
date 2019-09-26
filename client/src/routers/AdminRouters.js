@@ -11,7 +11,7 @@ import AdminResume from '../components/admin/resume/Resume';
 import AddResume from '../components/admin/resume/AddResume';
 import EditResume from '../components/admin/resume/EditResume';
 import EditSkills from '../components/admin/EditSkills';
-import ProjectForm from '../components/admin/resume/ProjectForm';
+import EditProjects from '../components/admin/resume/EditProjects';
 import NoMatch from '../components/NoMatch';
 
 const AdminRouters = () => {
@@ -26,7 +26,7 @@ const AdminRouters = () => {
       <PrivateRoute exact path="/admin/add_resume" component={AddResume} />
       <PrivateRoute exact path="/admin/edit_resume" component={EditResume} />
       <PrivateRoute exact path="/admin/skills/:id" component={EditSkills} />
-      <PrivateRoute exact path="/admin/projects/:id" component={ProjectForm} />
+      <PrivateRoute exact path="/admin/projects/:id" component={EditProjects} />
       <Route component={NoMatch} />
     </Switch>
   );
