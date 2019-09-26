@@ -1,48 +1,11 @@
-import axios from 'axios';
-import tokenConfig from '../../selectors/tokenConfig';
+import { updateAction, deleteAction } from '../../selectors/utils';
 
 export const postProf = payload => async (dispatch, getState) => {
-  try {
-    const res = await axios.patch(
-      '/api/resume/professional',
-      payload,
-      tokenConfig(getState)
-    );
-    dispatch({ type: 'EDIT_RESUME', payload: res.data });
-    dispatch({ type: 'RESUME_SUCCESS' });
-    dispatch({
-      type: 'POST_SUCCESS_MSG',
-      status: 200,
-      id: 'MSG',
-      msg: 'RESUME UPDATED'
-    });
-  } catch (e) {
-    dispatch({
-      type: 'RESUME_ERROR',
-      status: 400,
-      msg: 'Unable to update Resume',
-      id: 'Resume Fail'
-    });
-  }
+  const api = '/api/resume/professional';
+  await updateAction(payload, api, getState, dispatch);
 };
 
 export const deleteProf = id => async (dispatch, getState) => {
-  try {
-    await axios.delete(`/api/resume/professional/${id}`, tokenConfig(getState));
-    dispatch({ type: 'DELETE_PROF', id });
-    dispatch({ type: 'RESUME_SUCCESS' });
-    dispatch({
-      type: 'POST_SUCCESS_MSG',
-      status: 200,
-      id: 'MSG',
-      msg: 'RESUME DELETED'
-    });
-  } catch (e) {
-    dispatch({
-      type: 'RESUME_ERROR',
-      status: 400,
-      msg: 'Unable to delete Resume',
-      id: 'Resume Fail'
-    });
-  }
+  const api = `/api/resume/professional/${id}`;
+  await deleteAction(id, api, getState, dispatch, 'proffesionalBody');
 };

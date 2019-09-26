@@ -13,16 +13,6 @@ export default (state = initialState, action) => {
         resume: action.payload,
         isLoading: false
       };
-    case 'DELETE_PROF':
-      return {
-        ...state,
-        resume: {
-          ...state.resume,
-          proffesionalBody: state.resume.proffesionalBody.filter(
-            prof => action.id !== prof._id
-          )
-        }
-      };
     case 'DELETE_REF':
       return {
         ...state,
