@@ -4,8 +4,6 @@ import tokenConfig from '../selectors/tokenConfig';
 export const registerUser = (payload = {}) => async dispatch => {
   try {
     const res = await axios.post('/api/user', payload);
-    const resume = await axios.get('/api/resume');
-    dispatch({ type: 'GET_RESUME', payload: resume.data });
     dispatch({ type: 'REGISTER_SUCCESS', payload: res.data });
     dispatch({ type: 'AUTH_SUCCESS' });
   } catch (e) {
@@ -25,8 +23,6 @@ export const registerUser = (payload = {}) => async dispatch => {
 export const loginUser = (payload = {}) => async dispatch => {
   try {
     const res = await axios.post('/api/user/login', payload);
-    const resume = await axios.get('/api/resume');
-    dispatch({ type: 'GET_RESUME', payload: resume.data });
     dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
     dispatch({ type: 'AUTH_SUCCESS' });
   } catch (e) {
@@ -49,11 +45,11 @@ export const logOut = () => dispatch => {
 
 export const getUser = () => async (dispatch, getState) => {
   dispatch({ type: 'LOADING' });
+  const resume = await axios.get('/api/resume');
+  dispatch({ type: 'GET_RESUME', payload: resume.data });
   try {
     const res = await axios.get('/api/user', tokenConfig(getState));
-    const resume = await axios.get('/api/resume');
     dispatch({ type: 'GET_USER', payload: res.data });
-    dispatch({ type: 'GET_RESUME', payload: resume.data });
   } catch (e) {
     let msg = '',
       status = '';

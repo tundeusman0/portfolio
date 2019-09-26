@@ -6,7 +6,7 @@ import ContactForm from '../components/ContactForm';
 import NoMatch from '../components/NoMatch';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Resume from '../components/Resume';
+import Resume from '../components/resume/Resume';
 import Blog from '../components/Blog';
 import BlogPost from '../components/BlogPost';
 import AdminRouters from './AdminRouters';
