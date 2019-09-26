@@ -36,7 +36,7 @@ class ResumeTech extends React.Component {
           <div className="form_container">
             <div className="title_container">
               {this.state.msg && <p>{this.state.msg}</p>}
-              <h2>Post Tech</h2>
+              <h2>Post Socials</h2>
               <div className="row clearfix">
                 <div className="">
                   <form onSubmit={this.onSubmit}>
@@ -61,7 +61,11 @@ class ResumeTech extends React.Component {
                           </div>
                         )
                     )}
-                    <input className="button" type="submit" value="Post Tech" />
+                    <input
+                      className="button"
+                      type="submit"
+                      value="Post Socials"
+                    />
                   </form>
                 </div>
               </div>
