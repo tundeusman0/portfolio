@@ -2,9 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProjectForm from './ProjectForm';
-import { postProjects } from '../../../actions/resume/ResumeProj';
+import {
+  postProjects,
+  deleteProjects
+} from '../../../actions/resume/ResumeProj';
 
-const ResumeProjects = ({ projects, postProjects, history }) => {
+const ResumeProjects = ({
+  projects,
+  postProjects,
+  history,
+  deleteProjects
+}) => {
   return (
     <div>
       <ProjectForm
@@ -31,7 +39,7 @@ const ResumeProjects = ({ projects, postProjects, history }) => {
                   <div></div>Code Link: <span>{project.details.codeLink}</span>
                   <div></div> Link: <span>{project.details.link}</span>
                 </Link>
-                <button onClick={() => this.props.deleteProject(project._id)}>
+                <button onClick={() => deleteProjects(project._id)}>
                   Delete Prject
                 </button>
               </li>
@@ -51,5 +59,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postProjects }
+  { postProjects, deleteProjects }
 )(ResumeProjects);

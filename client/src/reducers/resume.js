@@ -41,6 +41,14 @@ export default (state = initialState, action) => {
           )
         }
       };
+    case 'DELETE_PROJECT':
+      return {
+        ...state,
+        resume: {
+          ...state.resume,
+          projects: state.resume.projects.filter(proj => action.id !== proj._id)
+        }
+      };
     default:
       return state;
   }
