@@ -7,6 +7,7 @@ import ResumeEdu from './ResumeEdu';
 import ResumeProf from './ResumeProf';
 import ResumeRef from './ResumeRef';
 import ResumeProjects from './ResumeProjects';
+import ResumeTech from './ResumeTech';
 
 class Resume extends React.Component {
   state = {
@@ -45,6 +46,7 @@ class Resume extends React.Component {
         <ResumeProf history={this.props.history} />
         <ResumeRef history={this.props.history} />
         <ResumeProjects history={this.props.history} />
+        <ResumeTech history={this.props.history} />
       </div>
     );
   }
