@@ -13,14 +13,6 @@ export default (state = initialState, action) => {
         resume: action.payload,
         isLoading: false
       };
-    case 'DELETE_EDU':
-      return {
-        ...state,
-        resume: {
-          ...state.resume,
-          education: state.resume.education.filter(edu => action.id !== edu._id)
-        }
-      };
     case 'DELETE_PROF':
       return {
         ...state,
