@@ -1,8 +1,11 @@
 import React from 'react';
 
-const resumeDetails = ({ contact, tech, social, reference }) => {
+const resumeDetails = ({ contact, tech, social, reference, download }) => {
   return (
     <div className="resume-details">
+      <button id="printButton" onClick={download}>
+        Download Resume
+      </button>
       {contact && (
         <div className="contact">
           <div className="contact-header">
@@ -31,7 +34,7 @@ const resumeDetails = ({ contact, tech, social, reference }) => {
         </div>
         <div className="tech-details">
           {tech &&
-            tech.map((techq,ind) => (
+            tech.map((techq, ind) => (
               <div key={ind} className="tech-detail">
                 <div>
                   <i className={techq.logo}></i>
@@ -80,7 +83,6 @@ const resumeDetails = ({ contact, tech, social, reference }) => {
             ))}
         </div>
       </div>
-      <a href="/">Download Resume</a>
     </div>
   );
 };
