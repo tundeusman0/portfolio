@@ -40,7 +40,7 @@ router.patch('/pix', auth, upload.single('upload'), resumePix.updateResumePix);
 // @access Public
 router.get('/pix', resumePix.getResumePix);
 
-// @router POST api/resume/education
+// @router POST api/resume/education 
 // @desc post resume educations
 // @access PRIVATE
 router.patch('/education', auth, resumeEdu.updateResumeEdu);

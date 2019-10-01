@@ -5,6 +5,7 @@ import auth from '../reducers/auth';
 import authError from '../reducers/authError';
 import resume from '../reducers/resume';
 import logo from '../reducers/logo';
+import blog from '../reducers/blog';
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // create store
@@ -14,7 +15,8 @@ export default () => {
       auth,
       authError,
       resume,
-      logo
+      logo,
+      blog
     }),
     composeEnhancer(applyMiddleware(thunk))
   );

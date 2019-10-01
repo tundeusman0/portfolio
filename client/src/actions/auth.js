@@ -51,6 +51,10 @@ export const getUser = () => async (dispatch, getState) => {
   axios
     .get('/api/logo')
     .then(logo => dispatch({ type: 'GET_LOGO', payload: logo.data }));
+  axios
+    .get('/api/blog')
+    .then(blog => dispatch({ type: 'GET_BLOG', payload: blog.data }));
+
   try {
     const res = await axios.get('/api/user', tokenConfig(getState));
     dispatch({ type: 'GET_USER', payload: res.data });
