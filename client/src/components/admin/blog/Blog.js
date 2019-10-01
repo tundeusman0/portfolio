@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 const Blog = ({ blogs }) => {
   // class Blog extends React.Component {
   // render() {
-  console.log(blogs);
   return (
     <div className="User arrange" style={{ marginTop: '0', marginBottom: '0' }}>
       <h1>Blog</h1>
@@ -21,7 +20,7 @@ const Blog = ({ blogs }) => {
             >
               <Link
                 style={{ fontSize: '20px' }}
-                to={`/admin/projects/${blog._id}`}
+                to={`/admin/edit_blog/${blog._id}`}
               >
                 HeadLine: {blog.headline}
                 <div></div> Details: <span> {blog.detail}</span>

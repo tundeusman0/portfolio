@@ -15,6 +15,7 @@ import EditProjects from '../components/admin/resume/EditProjects';
 import Logo from '../components/admin/logo/Logo';
 import Blog from '../components/admin/blog/Blog';
 import AddBlog from '../components/admin/blog/AddBlog';
+import EditBlog from '../components/admin/blog/EditBlog';
 import NoMatch from '../components/NoMatch';
 
 const AdminRouters = () => {
@@ -28,6 +29,7 @@ const AdminRouters = () => {
       <PrivateRoute exact path="/admin/logo" component={Logo} />
       <PrivateRoute exact path="/admin/blog" component={Blog} />
       <PrivateRoute exact path="/admin/add_blog" component={AddBlog} />
+      <PrivateRoute exact path="/admin/edit_blog/:id" component={EditBlog} />
       <PrivateRoute exact path="/admin/resume" component={AdminResume} />
       <PrivateRoute exact path="/admin/add_resume" component={AddResume} />
       <PrivateRoute exact path="/admin/edit_resume" component={EditResume} />

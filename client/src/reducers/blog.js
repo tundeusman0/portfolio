@@ -17,6 +17,21 @@ export default (state = initialState, action) => {
         blogs: [...state.blogs, action.payload],
         isLoading: false
       };
+    case 'EDIT_BLOG':
+      return {
+        ...state,
+        blogs: state.blogs.map(blog => {
+          if (blog._id === action.payload._id) {
+            return {
+              blog,
+              ...action.payload,
+              isLoading: false
+            };
+          } else {
+            return blog;
+          }
+        })
+      };
     default:
       return state;
   }

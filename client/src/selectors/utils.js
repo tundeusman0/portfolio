@@ -6,24 +6,30 @@ export const updateAction = async (
   api,
   getState,
   dispatch,
-  method = 'patch'
+  method = 'patch',
+  { type = 'EDIT_RESUME', typeS = 'RESUME_SUCCESS', msg = 'RESUME UPDATED' },
+  {
+    typeE = 'RESUME_ERROR',
+    msgE = 'Unable to update Resume',
+    idE = 'Resume Fail'
+  }
 ) => {
   try {
     const res = await axios[method](api, payload, tokenConfig(getState));
-    dispatch({ type: 'EDIT_RESUME', payload: res.data });
-    dispatch({ type: 'RESUME_SUCCESS' });
+    dispatch({ type, payload: res.data });
+    dispatch({ type: typeS });
     dispatch({
       type: 'POST_SUCCESS_MSG',
       status: 200,
       id: 'MSG',
-      msg: 'RESUME UPDATED'
+      msg
     });
   } catch (e) {
     dispatch({
-      type: 'RESUME_ERROR',
+      type: typeE,
       status: 400,
-      msg: 'Unable to update Resume',
-      id: 'Resume Fail'
+      msg: msgE,
+      id: idE
     });
   }
 };

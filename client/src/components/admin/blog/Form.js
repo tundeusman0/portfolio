@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 class Form extends React.Component {
   state = {
-    headline: '',
-    detail: '',
+    headline: this.props.blog ? this.props.blog.headline : '',
+    detail: this.props.blog ? this.props.blog.detail : '',
     msg: null
   };
   componentDidUpdate(prevProps) {
@@ -25,8 +25,11 @@ class Form extends React.Component {
     const { headline, detail } = this.state;
     const blog = { headline, detail };
     e.preventDefault();
-    console.log(blog);
-    this.props.formSubmit(blog);
+    if (this.formName === 'Edit Blog') {
+      this.props.formSubmit(blog);;
+    } else {
+      this.props.formSubmit(blog);
+    }
   };
   render() {
     return (
@@ -35,7 +38,7 @@ class Form extends React.Component {
           <div className="form_container">
             <div className="title_container">
               {this.state.msg && <p>{this.state.msg}</p>}
-              <h2>Slogan</h2>
+              <h2>{this.props.formName}</h2>
               <div className="row clearfix">
                 <div className="">
                   <form onSubmit={this.onSubmit}>
@@ -70,7 +73,7 @@ class Form extends React.Component {
                     <input
                       className="button"
                       type="submit"
-                      value={this.props.forName}
+                      value={this.props.formName}
                     />
                   </form>
                 </div>
