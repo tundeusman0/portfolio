@@ -1,12 +1,26 @@
 import React from 'react';
+import axios from 'axios';
 
-const Logo = () => {
+class Logo extends React.Component {
+  state = {
+    slogan: ''
+  };
+  componentDidMount() {
+    axios
+      .get('/api/logo')
+      .then(res => this.setState({ slogan: res.data.slogan }));
+    console.log(this.state.slogan);
+  }
+
+  render() {
+    const { slogan } = this.state;
     return (
       <div className="logo">
         <img src={`api/logo/pix`} alt="logo" />
-        <p>This is the slogan</p>
+        {slogan ? <p>{slogan}</p> : <p>This is the slogan</p>}
       </div>
     );
   }
+}
 
 export default Logo;
