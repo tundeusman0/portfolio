@@ -60,21 +60,23 @@ const resumeHeader = ({
         {projects && (
           <div className="proj-details">
             <table>
-              {projects.map(proj => (
-                <tr key={proj.name}>
-                  <td>{proj.name}</td>
-                  <td>
-                    {proj.details.desc}
-                    <span className="project-links">
-                      <p>Check App here</p>
-                      {proj.details.link}
-                      <p>code here</p>
-                      {proj.details.codeLink}
-                    </span>
-                  </td>
-                  <td>{proj.tech}</td>
-                </tr>
-              ))}
+              <tbody>
+                {projects.map(proj => (
+                  <tr key={proj.name}>
+                    <td>{proj.name}</td>
+                    <td>
+                      {proj.details.desc}
+                      <span className="project-links">
+                        <p>Check App here</p>
+                        {proj.details.link}
+                        <p>code here</p>
+                        {proj.details.codeLink}
+                      </span>
+                    </td>
+                    <td>{proj.tech}</td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         )}
