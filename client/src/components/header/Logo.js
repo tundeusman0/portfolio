@@ -9,7 +9,6 @@ class Logo extends React.Component {
     axios
       .get('/api/logo')
       .then(res => this.setState({ slogan: res.data.slogan }));
-    console.log(this.state.slogan);
   }
 
   render() {
