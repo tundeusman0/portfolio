@@ -1,6 +1,6 @@
 import axios from 'axios';
 import tokenConfig from '../../selectors/tokenConfig';
-import { updateAction, deleteAction } from '../../selectors/utils';
+import { updateAction, deleteAction, addImage } from '../../selectors/utils';
 
 export const addBlog = payload => async (dispatch, getState) => {
   try {
@@ -55,5 +55,25 @@ export const deleteBlog = id => async (dispatch, getState) => {
       msg: 'BLOG DELETED'
     },
     { typeE: 'BLOG_ERROR', msgE: 'Unable to delete blog', id: 'Blog Fail' }
+  );
+};
+
+export const postBlogImage = (payload = {}) => async (dispatch, getState) => {
+  await addImage(
+    payload.file,
+    getState,
+    dispatch,
+    `/api/blog/pix/${payload.id}`,
+    {
+      type: 'BLOG_SUCCESS',
+      typeB: 'POST_SUCCESS_MSG',
+      msgS: 'BLOG PIX UPDATED'
+    },
+    {
+      typeE: 'BLOG_ERROR',
+      msgE: 'Unable to update BLOG Pix.',
+      id: 'BLOG Fail'
+    },
+    'post'
   );
 };
