@@ -48,3 +48,31 @@ export const deleteAction = async (id, api, getState, dispatch, resumeName) => {
     });
   }
 };
+
+export const addImage = async (
+  file,
+  getState,
+  dispatch,
+  api,
+  { type, typeB, msgS },
+  { typeE, msgE, id },
+  method = 'patch'
+) => {
+  try {
+    await axios[method](api, file, tokenConfig(getState));
+    dispatch({ type });
+    dispatch({
+      type: typeB,
+      status: 200,
+      id: 'MSG',
+      msg: msgS
+    });
+  } catch (e) {
+    dispatch({
+      type: typeE,
+      status: 400,
+      msg: msgE,
+      id
+    });
+  }
+};

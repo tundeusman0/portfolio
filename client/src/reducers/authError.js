@@ -11,6 +11,7 @@ export default (state = initialState, action) => {
     case 'POST_SUCCESS':
     case 'POST_SUCCESS_MSG':
     case 'RESUME_ERROR':
+    case 'LOGO_ERROR':
       return {
         ...state,
         status: action.status,
@@ -19,6 +20,7 @@ export default (state = initialState, action) => {
       };
     case 'AUTH_SUCCESS':
     case 'RESUME_SUCCESS':
+    case 'LOGO_SUCCESS':
       return {
         ...state,
         status: '',

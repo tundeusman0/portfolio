@@ -45,8 +45,12 @@ export const logOut = () => dispatch => {
 
 export const getUser = () => async (dispatch, getState) => {
   dispatch({ type: 'LOADING' });
-  const resume = await axios.get('/api/resume');
-  dispatch({ type: 'GET_RESUME', payload: resume.data });
+  axios
+    .get('/api/resume')
+    .then(resume => dispatch({ type: 'GET_RESUME', payload: resume.data }));
+  axios
+    .get('/api/logo')
+    .then(logo => dispatch({ type: 'GET_LOGO', payload: logo.data }));
   try {
     const res = await axios.get('/api/user', tokenConfig(getState));
     dispatch({ type: 'GET_USER', payload: res.data });

@@ -14,14 +14,18 @@ router.post('/', auth, async (req, res) => {
   if (!slogan) {
     return res.status(406).json({ msg: 'please enter slogan' });
   }
-  const logo = await Logo.findOne();
-  if (logo) {
-    return res.status(409).json({ msg: 'you cannot post' });
-  }
   try {
-    const slogan = new Logo(req.body);
-    slogan.save();
-    res.status(201).send(slogan);
+    const isLogo = await Logo.findOne();
+    let newSlogan = null;
+    if (isLogo) {
+      newSlogan = await Logo.findOneAndUpdate(
+        { slogan: isLogo.slogan },
+        { $set: { slogan } }
+      );
+    }
+    newSlogan = new Logo(req.body);
+    newSlogan.save();
+    res.status(201).send(newSlogan);
   } catch (error) {
     res.status(400).json({ msg: 'error' });
   }
@@ -50,7 +54,7 @@ const upload = multerUpload(1000000);
 // @access PRIVATE
 router.post('/pix', auth, upload.single('upload'), async (req, res) => {
   if (!req.file) {
-    return res.status(406).json({ msg: 'Please upload a pictue' });
+    return res.status(406).json({ msg: 'Please upload a picture' });
   }
   await uploadImage(req, res, 'logo', Logo);
   (error, req, res, next) => {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import tokenConfig from '../../selectors/tokenConfig';
-import { updateAction } from '../../selectors/utils';
+import { updateAction, addImage } from '../../selectors/utils';
 
 export const addResume = payload => async (dispatch, getState) => {
   try {
@@ -29,21 +29,20 @@ export const editResume = payload => async (dispatch, getState) => {
 };
 
 export const postImage = (file = {}) => async (dispatch, getState) => {
-  try {
-    await axios.patch('/api/resume/pix', file, tokenConfig(getState));
-    dispatch({ type: 'RESUME_SUCCESS' });
-    dispatch({
-      type: 'POST_SUCCESS_MSG',
-      status: 200,
-      id: 'MSG',
-      msg: 'RESUME PIX UPDATED'
-    });
-  } catch (e) {
-    dispatch({
-      type: 'RESUME_ERROR',
-      status: 400,
-      msg: 'Unable to update Resume Pix',
+  await addImage(
+    file,
+    getState,
+    dispatch,
+    '/api/resume/pix',
+    {
+      type: 'RESUME_SUCCESS',
+      typeB: 'POST_SUCCESS_MSG',
+      msgS: 'RESUME PIX UPDATED'
+    },
+    {
+      typeE: 'RESUME_ERROR',
+      msgE: 'Unable to update Resume Pix',
       id: 'Resume Fail'
-    });
-  }
+    }
+  );
 };
