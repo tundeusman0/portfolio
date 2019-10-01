@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { deleteBlog } from '../../../actions/blog/blog';
 
-const Blog = ({ blogs }) => {
-  // class Blog extends React.Component {
-  // render() {
+const Blog = ({ blogs, deleteBlog }) => {
   return (
     <div className="User arrange" style={{ marginTop: '0', marginBottom: '0' }}>
       <h1>Blog</h1>
@@ -25,7 +24,7 @@ const Blog = ({ blogs }) => {
                 HeadLine: {blog.headline}
                 <div></div> Details: <span> {blog.detail}</span>
               </Link>
-              <button>Delete Blog</button>
+              <button onClick={() => deleteBlog(blog._id)}>Delete Blog</button>
             </li>
           ))}
         </ul>
@@ -35,10 +34,12 @@ const Blog = ({ blogs }) => {
     </div>
   );
 };
-// }
 
 const mapStateToProps = state => ({
   blogs: state.blog.blogs
 });
 
-export default connect(mapStateToProps)(Blog);
+export default connect(
+  mapStateToProps,
+  { deleteBlog }
+)(Blog);

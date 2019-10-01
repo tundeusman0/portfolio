@@ -1,6 +1,6 @@
 import axios from 'axios';
 import tokenConfig from '../../selectors/tokenConfig';
-import { updateAction } from '../../selectors/utils';
+import { updateAction, deleteAction } from '../../selectors/utils';
 
 export const addBlog = payload => async (dispatch, getState) => {
   try {
@@ -38,5 +38,22 @@ export const editBlog = payload => async (dispatch, getState) => {
       msg: 'BLOG UPDATED'
     },
     { typeE: 'BLOG_ERROR', msgE: 'Unable to edit Blog', idE: 'Blog Fail' }
+  );
+};
+
+export const deleteBlog = id => async (dispatch, getState) => {
+  const api = `/api/blog/${id}`;
+  await deleteAction(
+    id,
+    api,
+    getState,
+    dispatch,
+    undefined,
+    {
+      type: 'DELETE_BLOG',
+      typeS1: 'BLOG_SUCCESS',
+      msg: 'BLOG DELETED'
+    },
+    { typeE: 'BLOG_ERROR', msgE: 'Unable to delete blog', id: 'Blog Fail' }
   );
 };

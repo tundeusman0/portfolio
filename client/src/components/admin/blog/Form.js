@@ -10,7 +10,7 @@ class Form extends React.Component {
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
-      if (error.id === 'Logo Fail') {
+      if (error.id === 'Blog Fail') {
         this.setState({ msg: error.msg });
       } else {
         this.setState({ msg: null });

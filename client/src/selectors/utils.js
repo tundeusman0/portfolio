@@ -34,23 +34,35 @@ export const updateAction = async (
   }
 };
 
-export const deleteAction = async (id, api, getState, dispatch, resumeName) => {
+export const deleteAction = async (
+  id,
+  api,
+  getState,
+  dispatch,
+  resumeName,
+  { type = 'DELETE_RESUMES', typeS = 'RESUME_SUCCESS', msg = 'RESUME DELETED' },
+  {
+    typeE = 'RESUME_ERROR',
+    msgE = 'Unable to delete Resume',
+    idE = 'Resume Fail'
+  }
+) => {
   try {
     await axios.delete(api, tokenConfig(getState));
-    dispatch({ type: 'DELETE_RESUMES', id, resumeName });
-    dispatch({ type: 'RESUME_SUCCESS' });
+    dispatch({ type, id, resumeName });
+    dispatch({ type: typeS });
     dispatch({
       type: 'POST_SUCCESS_MSG',
       status: 200,
       id: 'MSG',
-      msg: 'RESUME DELETED'
+      msg
     });
   } catch (e) {
     dispatch({
-      type: 'RESUME_ERROR',
+      type: typeE,
       status: 400,
-      msg: 'Unable to delete Resume',
-      id: 'Resume Fail'
+      msg: msgE,
+      id: idE
     });
   }
 };
