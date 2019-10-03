@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Form from './Form';
 import { addBlog } from './../../../actions/blog/blog';
+import RichEditor from './RichEditor';
 
 const AddBlog = ({ addBlog, history }) => {
   return (
-    <div className="User arrange" style={{ marginTop: '0', marginBottom: '0' }}>
-      <Link to="/admin/blog">TO BLOGS</Link>
-      <Form
+    <div className="Editor">
+      <Link className="editorTag" to="/admin/blog">
+        TO BLOGS
+      </Link>
+      <RichEditor
         formName="Add a Blog"
         history={history}
         formSubmit={blog => addBlog(blog)}

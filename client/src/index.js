@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/style.scss';
 import './styles/form.css';
+import './styles/draft.css';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import AppRouter from './routers/AppRouter';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';

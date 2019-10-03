@@ -36,7 +36,7 @@ class ResumePix extends React.Component {
       );
     }
     return (
-      <div className="User">
+      <div className="formEditor">
         <div className="form_wrapper" style={{ margin: 5 }}>
           <div className="form_container">
             <div className="title_container">

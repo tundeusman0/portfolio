@@ -22,7 +22,6 @@ const Blog = ({ blogs, deleteBlog }) => {
                 to={`/admin/edit_blog/${blog._id}`}
               >
                 HeadLine: {blog.headline}
-                <div></div> Details: <span> {blog.detail}</span>
               </Link>
               <button onClick={() => deleteBlog(blog._id)}>Delete Blog</button>
             </li>
