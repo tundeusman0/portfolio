@@ -29,7 +29,11 @@ class ResumePix extends React.Component {
     let { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
-      $imagePreview = <img src={imagePreviewUrl} alt="imagePreview" />;
+      $imagePreview = (
+        <div className="smallerImage">
+          <img src={imagePreviewUrl} alt="imagePreview" />
+        </div>
+      );
     } else {
       $imagePreview = (
         <div className="previewText">Please select an Image for Preview</div>
@@ -41,7 +45,9 @@ class ResumePix extends React.Component {
           <div className="form_container">
             <div className="title_container">
               <div className="row clearfix">
-                <img src={this.props.pixSrc} alt="home-pix2" />
+                <div className="smallerImage">
+                  <img src={this.props.pixSrc} alt="home-pix2" />
+                </div>
                 <div className="">
                   <form onSubmit={this.formSubmit}>
                     <input

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class ContactForm extends Component {
   state = {
@@ -14,6 +15,9 @@ class ContactForm extends Component {
     e.preventDefault();
     console.log(name, email, comment);
   };
+  componentDidMount() {
+    console.log(this.props.blog);
+  }
   render() {
     return (
       <div>
@@ -109,4 +113,7 @@ class ContactForm extends Component {
   }
 }
 
-export default ContactForm;
+const mapStateToProps = (state, { match }) => ({
+  blog: state.blog.blogs.find(blog => blog._id === match.params.id)
+});
+export default connect(mapStateToProps)(ContactForm);

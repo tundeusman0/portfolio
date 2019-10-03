@@ -7,8 +7,8 @@ import NoMatch from '../components/NoMatch';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Resume from '../components/resume/Resume';
-import Blog from '../components/Blog';
-import BlogPost from '../components/BlogPost';
+import Blogs from '../components/Blog/Blogs';
+import BlogPost from '../components/Blog/BlogPost';
 import AdminRouters from './AdminRouters';
 
 const history = createBrowserHistory();
@@ -21,7 +21,8 @@ const AppRouter = () => (
         <Route exact path="/" component={DashBoard} />
         <Route exact path="/contact" component={ContactForm} />
         <Route exact path="/resume" component={Resume} />
-        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/blog" component={Blogs} />
+        <Route exact path="/blog/:id" component={BlogPost} />
         <Route exact path="/chat" component={BlogPost} />
         <AdminRouters />
         <Route exact component={NoMatch} />

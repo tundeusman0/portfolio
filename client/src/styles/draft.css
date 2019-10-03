@@ -10,6 +10,10 @@ pre {
   justify-content: center;
   margin: 10px;
 }
+.smallerImage img {
+  width: 150px;
+  height: 150px;
+}
 .Editor {
   background: #035547;
 }
