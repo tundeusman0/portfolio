@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 class ContactForm extends Component {
   state = {
@@ -7,19 +9,30 @@ class ContactForm extends Component {
     details: '',
     msg: null
   };
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  componentDidMount() {
+    this.Interval = setInterval(() => this.setState({ msg: '' }), 4000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.Interval);
+  }
   onSubmit = e => {
     const { name, email, details } = this.state;
     e.preventDefault();
-    console.log(name, email, details);
+    const info = { name, email, details };
+    axios
+      .post('/api/contact', info)
+      .then(() =>
+        this.setState({ name: '', email: '', details: '', msg: 'Sent' })
+      )
+      .catch(() => this.setState({ msg: 'Not Sent' }));
   };
   render() {
     return (
       <div>
         <div className="form_wrapper">
           <div className="form_container">
+            {this.state.msg}
             <div className="title_container">
               <h2>Contact Me</h2>
               <div className="row clearfix">
@@ -81,4 +94,4 @@ class ContactForm extends Component {
   }
 }
 
-export default ContactForm;
+export default connect()(ContactForm);

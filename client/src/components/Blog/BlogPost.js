@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Comments from './Comments';
 
@@ -23,7 +24,7 @@ class ContactForm extends Component {
           <div className="blog-header">
             <h1>TECH POSTS</h1>
           </div>
-          <div className="blog-news"></div>
+          <Link to={`/blog`}>Back To blogs</Link>
           {blog ? (
             <div className="blog-view">
               {img && <img src={`/api/blog/pix/${blog._id}`} alt="blog-pix" />}
