@@ -15,7 +15,7 @@ class Blog extends React.Component {
     const { headline, details } = this.props;
     return (
       <div>
-        {img && <img src={`api/blog/pix/${this.props.id}`} alt="blog-pix" />}
+        {img && <img src={`/api/blog/pix/${this.props.id}`} alt="blog-pix" />}
         <p className="headline">{headline}</p>
         <div dangerouslySetInnerHTML={{ __html: details }} />
       </div>

@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import Comments from './Comments';
 
 class ContactForm extends Component {
   state = {
-    name: '',
-    comment: '',
+    img: '',
     msg: null
   };
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  onSubmit = e => {
-    const { name, email, comment } = this.state;
-    e.preventDefault();
-    console.log(name, email, comment);
-  };
   componentDidMount() {
-    console.log(this.props.blog);
+    this.props.blog &&
+      axios
+        .get(`/api/blog/pix/${this.props.blog._id}`)
+        .then(res => this.setState({ img: res.data }));
   }
   render() {
+    const { blog } = this.props;
+    const { img } = this.state;
     return (
       <div>
         <div className="blog">
@@ -26,88 +24,28 @@ class ContactForm extends Component {
             <h1>TECH POSTS</h1>
           </div>
           <div className="blog-news"></div>
-          <div className="blog-new">
-            <p>
-              lorem The line-clamp property truncates text at a specific number
-              of lines. The spec for it is currently an Editor's Draft The
-              line-clamp property truncates text at a specific number of lines.
-              The spec for it is currently an Editor's Draft The line-clamp
-              property truncates text at a specific number of lines. The spec
-              for it is currently an Editor's Draft The line-clamp property
-              truncates text at a specific number of lines. The spec for it is
-              currently an Editor's Draft The line-clamp property truncates text
-              at a specific number of lines. The spec for it is currently an
-              Editor's Draft The line-clamp property truncates text at a
-              specific number of lines. The spec for it is currently an Editor's
-              Draft The line-clamp property truncates text at a specific number
-              of lines. The spec for it is currently an Editor's Draft The
-              line-clamp property truncates text at a specific number of lines.
-              The spec for it is currently an Editor's Draft The line-clamp
-              property truncates text at a specific number of lines. The spec
-              for it is currently an Editor's Draft The line-clamp property
-              truncates text at a specific number of lines. The spec for it is
-              currently an Editor's Draft
-            </p>
-          </div>
-        </div>
-        <div className="form_wrapper">
-          <div className="form_container">
-            <div className="title_container">
-              <h2>Contact Me</h2>
-              <div className="row clearfix">
-                <div className="">
-                  <form onSubmit={this.onSubmit}>
-                    <div className="input_field">
-                      <span>
-                        <i aria-hidden="true" className="fa fa-user"></i>
-                      </span>
-                      <input
-                        autoFocus={true}
-                        type="text"
-                        placeholder="Name"
-                        value={this.state.name}
-                        onChange={this.onChange}
-                        name="name"
-                        required
-                      />
-                    </div>
-                    <div className="input_field">
-                      <span>
-                        <i aria-hidden="true" className="fa fa-envelope"></i>
-                      </span>
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.onChange}
-                        name="email"
-                        required
-                      />
-                    </div>
-                    <div className="textarea_field">
-                      <span>
-                        <i aria-hidden="true" className="fa fa-message"></i>
-                      </span>
-                      <textarea
-                        type="text"
-                        placeholder="Your Message."
-                        value={this.state.comment}
-                        onChange={this.onChange}
-                        name="comment"
-                        required
-                      ></textarea>
-                    </div>
-                    <input
-                      className="button"
-                      type="submit"
-                      value="Contact Me"
-                    />
-                  </form>
-                </div>
+          {blog ? (
+            <div className="blog-view">
+              {img && <img src={`/api/blog/pix/${blog._id}`} alt="blog-pix" />}
+              <p className="headline">{blog.headline}</p>
+              <div
+                className="blog-others"
+                dangerouslySetInnerHTML={{ __html: blog.detail }}
+              />
+              <div>
+                {blog.comments.map(comment => (
+                  <div className="comments" key={comment._id}>
+                    <p>{comment.name}</p>
+                    <h3>{comment.comment}</h3>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          ) : (
+            <p>Wrong Place</p>
+          )}
         </div>
+        {blog && <Comments id={blog._id} history={this.props.history} />}
       </div>
     );
   }

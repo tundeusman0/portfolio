@@ -42,7 +42,19 @@
   margin: 10px;
 }
 .headline {
-  font-size: 30px !important;
+  font-size: 35px !important;
+  font-weight: bold;
+}
+.comments {
+  background: #888686;
+  margin: 5px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.comments p {
+  font-style: italic;
 }
 .blog-new p {
   font-size: 20px;

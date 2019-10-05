@@ -4,7 +4,21 @@ pre {
   padding: 1px 10px;
   color: #975c0e !important;
 }
-
+.blog-others p {
+  font-size: 25px;
+}
+.blog-view {
+  color: antiquewhite;
+  margin: 0 10px 0 10px;
+  border-radius: 20px;
+  background: #01251f;
+  height: auto;
+  overflow: hidden;
+  text-align: center;
+}
+.blog-view img {
+  margin-top: 10px;
+}
 .formEditor {
   display: flex;
   justify-content: center;
