@@ -22,7 +22,6 @@ const AdminRouters = () => {
   return (
     <Switch>
       <PrivateRoute exact path="/admin/admin" component={Admin} />
-      <Route exact path="/admin/register" component={Register} />
       <PublicRoute exact path="/admin/login" component={Login} />
       <PrivateRoute exact path="/admin/user" component={User} />
       <PrivateRoute exact path="/admin/skills" component={Skills} />

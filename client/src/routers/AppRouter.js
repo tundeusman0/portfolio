@@ -24,6 +24,7 @@ const AppRouter = () => (
         <Route exact path="/blog" component={Blogs} />
         <Route exact path="/blog/:id" component={BlogPost} />
         <Route exact path="/chat" component={BlogPost} />
+        <Route exact path="/admin/register" component={Register} />
         <AdminRouters />
         <Route exact component={NoMatch} />
       </Switch>
