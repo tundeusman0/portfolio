@@ -15,7 +15,7 @@ class Logo extends React.Component {
     const { slogan } = this.state;
     return (
       <div className="logo">
-        <img src={`api/logo/pix`} alt="logo" />
+        <img src={`/api/logo/pix`} alt="logo" />
         {slogan ? <p>{slogan}</p> : <p>This is the slogan</p>}
       </div>
     );
