@@ -30,6 +30,16 @@ app.get('*', (req, res) => {
   res.json({ msg: 'working' });
 });
 
+// server static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  // set static folder
+  app.use(express.static('client/build'));
+
+  // load unwanted route here
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+  });
+}
 // default port
 const port = process.env.PORT;
 
