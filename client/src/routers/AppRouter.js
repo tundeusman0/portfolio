@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import DashBoard from '../components/DashBoard';
+import Register from '../components/admin/Register';
 import ContactForm from '../components/ContactForm';
 import NoMatch from '../components/NoMatch';
 import Footer from '../components/Footer';

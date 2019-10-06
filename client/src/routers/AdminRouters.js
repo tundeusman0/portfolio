@@ -3,7 +3,6 @@ import React from 'react';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import Admin from '../components/admin/Admin';
-import Register from '../components/admin/Register';
 import Login from '../components/admin/Login';
 import User from '../components/admin/User';
 import Skills from '../components/admin/Skills';
