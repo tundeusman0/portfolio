@@ -26,10 +26,6 @@ app.use('/api/contact', contactRouter);
 app.use('/api/resume', resumeRouter);
 app.use('/api/blog', blogRouter);
 
-app.get('*', (req, res) => {
-  res.json({ msg: 'working' });
-});
-
 // server static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // set static folder
