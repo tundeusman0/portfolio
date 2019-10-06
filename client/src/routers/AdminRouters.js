@@ -3,6 +3,7 @@ import React from 'react';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import Admin from '../components/admin/Admin';
+import Register from '../components/admin/Register';
 import Login from '../components/admin/Login';
 import User from '../components/admin/User';
 import Skills from '../components/admin/Skills';
@@ -20,6 +21,7 @@ import NoMatch from '../components/NoMatch';
 const AdminRouters = () => {
   return (
     <Switch>
+      <PublicRoute exact path="/admin/register" component={Register} />
       <PrivateRoute exact path="/admin/admin" component={Admin} />
       <PublicRoute exact path="/admin/login" component={Login} />
       <PrivateRoute exact path="/admin/user" component={User} />
