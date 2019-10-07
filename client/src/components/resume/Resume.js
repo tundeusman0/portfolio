@@ -55,24 +55,26 @@ class Resume extends React.Component {
     });
   };
   render() {
-    const { details, education, projects } = this.state.resume;
-    const { contact, tech, social, reference } = this.state.resume;
     return (
       <div id="divToPrint" className="resume">
-        <ResumeHeader
-          details={details}
-          education={education}
-          proffesionalBody={this.state.resume.proffesionalBody}
-          projects={projects}
-          personalProfile={this.state.resume.personalProfile}
-        />
-        <ResumeDetails
-          contact={contact}
-          tech={tech}
-          social={social}
-          reference={reference}
-          download={this.printDocument}
-        />
+        {this.state.resume && (
+          <div>
+            <ResumeHeader
+              details={this.state.resume.details}
+              education={this.state.resume.education}
+              proffesionalBody={this.state.resume.proffesionalBody}
+              projects={this.state.resume.projects}
+              personalProfile={this.state.resume.personalProfile}
+            />
+            <ResumeDetails
+              contact={this.state.resume.contact}
+              tech={this.state.resume.tech}
+              social={this.state.resume.social}
+              reference={this.state.resume.reference}
+              download={this.printDocument}
+            />
+          </div>
+        )}
       </div>
     );
   }
