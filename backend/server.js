@@ -27,13 +27,13 @@ app.use('/api/contact', contactRouter);
 app.use('/api/resume', resumeRouter);
 app.use('/api/blog', blogRouter);
 
+// set static folder
+app.use(express.static(path.join(__dirname, '..', 'client/build')));
+
 // server static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  // set static folder
-  app.use(express.static('client/build'));
-
   // load unwanted route here
-  app.get('/*', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
