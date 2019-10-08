@@ -33,7 +33,7 @@ const ResumeEdu = ({ postEdu, edus, history, deleteEdu }) => {
 };
 
 const mapStateToProps = state => ({
-  edus: state.resume.resume.education
+  edus: state.resume.resume && state.resume.resume.education
 });
 
 export default connect(

@@ -7,12 +7,16 @@ export const updateAction = async (
   getState,
   dispatch,
   method = 'patch',
-  { type = 'EDIT_RESUME', typeS = 'RESUME_SUCCESS', msg = 'RESUME UPDATED' },
+  {
+    type = 'EDIT_RESUME',
+    typeS = 'RESUME_SUCCESS',
+    msg = 'RESUME UPDATED'
+  } = {},
   {
     typeE = 'RESUME_ERROR',
     msgE = 'Unable to update Resume',
     idE = 'Resume Fail'
-  }
+  } = {}
 ) => {
   try {
     const res = await axios[method](api, payload, tokenConfig(getState));

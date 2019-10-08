@@ -46,7 +46,7 @@ const ResumeProjects = ({
             ))}
           </ul>
         ) : (
-          <h2>No Prjects</h2>
+          <h2>No Projects</h2>
         )}
       </div>
     </div>
@@ -54,7 +54,7 @@ const ResumeProjects = ({
 };
 
 const mapStateToProps = state => ({
-  projects: state.resume.resume.projects
+  projects: state.resume.resume && state.resume.resume.projects
 });
 
 export default connect(

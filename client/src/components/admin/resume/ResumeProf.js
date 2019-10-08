@@ -33,7 +33,8 @@ const ResumeProf = ({ postProf, profs, history, deleteProf }) => {
 };
 
 const mapStateToProps = state => ({
-  profs: state.resume.resume.proffesionalBody
+  profs:
+    state.resume.resume && state.resume.resume.proffesionalBody
 });
 
 export default connect(

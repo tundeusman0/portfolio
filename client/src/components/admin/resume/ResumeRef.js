@@ -90,7 +90,7 @@ class ResumeProf extends React.Component {
               ))}
             </ul>
           ) : (
-            <h2>No Professional Certificate</h2>
+            <h2>No Reference</h2>
           )}
         </div>
       </div>
@@ -99,7 +99,7 @@ class ResumeProf extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  refs: state.resume.resume.reference,
+  refs: state.resume.resume && state.resume.resume.reference,
   error: state.authError
 });
 

@@ -84,7 +84,7 @@ class ResumeTech extends React.Component {
               ))}
             </ul>
           ) : (
-            <h2>No Professional Certificate</h2>
+            <h2>No Tech</h2>
           )}
         </div>
       </div>
@@ -93,7 +93,7 @@ class ResumeTech extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tech: state.resume.resume.tech,
+  tech: state.resume.resume && state.resume.resume.tech,
   error: state.authError
 });
 
