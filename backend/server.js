@@ -20,6 +20,16 @@ app.use(cors());
 // enable json
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'DELETE, PUT, GET, POST');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
+
 // enable the routers
 app.use('/api/user', userRouter);
 app.use('/api/logo', logoRouter);
@@ -27,16 +37,17 @@ app.use('/api/contact', contactRouter);
 app.use('/api/resume', resumeRouter);
 app.use('/api/blog', blogRouter);
 
+app.use(express.static(path.join(__dirname, '../client/build')));
 // server static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // set static folder
-  app.use(express.static('client/build'));
-
-  // load unwanted route here
-  app.get(/^\/(?!api).*/, (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-  });
+  app.use(express.static(path.join(__dirname, '../client/build')));
 }
+// load unwanted route here
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
 // default port
 const port = process.env.PORT;
 
