@@ -252,10 +252,11 @@ div.proj-details > div:last-child {
   }
   .resume-details {
     flex: 1;
+    position: relative
   }
   div.resume-details button {
-    top: 200px;
     left: 150px;
+    bottom: 1120px;
     position: absolute;
   }
   .proj-detail span {
