@@ -23,11 +23,7 @@ export const editUser = (payload = {}) => async (dispatch, getState) => {
 export const editStatus = (payload = {}) => async (dispatch, getState) => {
   const api = `/api/user/status`;
   try {
-    console.warn(payload);
-    console.warn(api);
-    console.warn(tokenConfig(getState));
     const res = await axios.patch(api, payload, tokenConfig(getState));
-    console.warn(res.data);
     dispatch({ type: 'EDIT_STATUS', payload: res.data });
     dispatch({ type: 'AUTH_SUCCESS' });
     dispatch({
@@ -36,7 +32,6 @@ export const editStatus = (payload = {}) => async (dispatch, getState) => {
       msg: 'Status Posted'
     });
   } catch (e) {
-    console.warn(e);
     let msg = '',
       status = '';
     if (e.message === 'Request failed with status code 406') {
