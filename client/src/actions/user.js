@@ -21,13 +21,12 @@ export const editUser = (payload = {}) => async (dispatch, getState) => {
 };
 
 export const editStatus = (payload = {}) => async (dispatch, getState) => {
-  console.warn(payload);
+  const api = `/api/user/status`;
   try {
-    const res = await axios.patch(
-      '/api/user/status',
-      payload,
-      tokenConfig(getState)
-    );
+    console.warn(payload);
+    console.warn(api);
+    console.warn(tokenConfig(getState));
+    const res = await axios.patch(api, payload, tokenConfig(getState));
     console.warn(res.data);
     dispatch({ type: 'EDIT_STATUS', payload: res.data });
     dispatch({ type: 'AUTH_SUCCESS' });

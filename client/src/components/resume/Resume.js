@@ -56,9 +56,9 @@ class Resume extends React.Component {
   };
   render() {
     return (
-      <div id="divToPrint" className="resume">
+      <div>
         {this.state.resume && (
-          <div>
+          <div id="divToPrint" className="resume">
             <ResumeHeader
               details={this.state.resume.details}
               education={this.state.resume.education}
