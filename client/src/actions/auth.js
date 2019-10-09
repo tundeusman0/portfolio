@@ -56,7 +56,10 @@ export const getUser = () => async (dispatch, getState) => {
     .then(blog => dispatch({ type: 'GET_BLOG', payload: blog.data }));
 
   try {
-    const res = await axios.get('/api/user', tokenConfig(getState));
+    let res = null;
+    if (getState().auth.token) {
+      res = await axios.get('/api/user', tokenConfig(getState));
+    }
     dispatch({ type: 'GET_USER', payload: res.data });
   } catch (e) {
     let msg = '',
