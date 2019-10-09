@@ -28,10 +28,10 @@ app.use('/api/blog', blogRouter);
 // server static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // set static folder
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use('/', express.static(path.join(__dirname, '../client/build')));
 
   // load unwanted route here
-  app.get('*', (req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 }

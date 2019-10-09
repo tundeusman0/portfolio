@@ -4,15 +4,13 @@ import axios from 'axios';
 class Logo extends React.Component {
   state = {
     slogan: '',
-    img: ""
+    img: ''
   };
   componentDidMount() {
     axios
       .get('/api/logo')
       .then(res => this.setState({ slogan: res.data.slogan }));
-      axios
-      .get('/api/logo/pix')
-      .then(res => this.setState({ img: res.data }));
+    axios.get('/api/logo/pix').then(res => this.setState({ img: res.data }));
   }
 
   render() {
