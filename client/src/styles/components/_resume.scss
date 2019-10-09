@@ -252,14 +252,27 @@ div.proj-details > div:last-child {
   }
   .resume-details {
     flex: 1;
-    position: relative
+    position: relative;
   }
   div.resume-details button {
     left: 150px;
-    bottom: 1020px;
+    bottom: 1660px;
+    // bottom: 1020px;
     position: absolute;
   }
   .proj-detail span {
     overflow: scroll;
+  }
+}
+
+@media screen and (device-aspect-ratio: 40/71) {
+  div.resume-details button {
+    left: 150px;
+    bottom: 1760px;
+    position: absolute;
+  }
+  .resume-details {
+    flex: 1;
+    position: relative;
   }
 }
