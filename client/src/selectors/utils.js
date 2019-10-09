@@ -44,12 +44,16 @@ export const deleteAction = async (
   getState,
   dispatch,
   resumeName,
-  { type = 'DELETE_RESUMES', typeS = 'RESUME_SUCCESS', msg = 'RESUME DELETED' },
+  {
+    type = 'DELETE_RESUMES',
+    typeS = 'RESUME_SUCCESS',
+    msg = 'RESUME DELETED'
+  } = {},
   {
     typeE = 'RESUME_ERROR',
     msgE = 'Unable to delete Resume',
     idE = 'Resume Fail'
-  }
+  } = {}
 ) => {
   try {
     await axios.delete(api, tokenConfig(getState));

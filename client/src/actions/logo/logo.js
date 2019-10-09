@@ -25,7 +25,6 @@ export const postLogoImage = (file = {}) => async (dispatch, getState) => {
 export const addSlogan = payload => async (dispatch, getState) => {
   try {
     const res = await axios.post('/api/logo', payload, tokenConfig(getState));
-    console.log(res.data);
     dispatch({ type: 'ADD_LOGO', payload: res.data });
     dispatch({ type: 'LOGO_SUCCESS' });
     dispatch({
