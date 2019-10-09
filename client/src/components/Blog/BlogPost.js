@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Comments from './Comments';
@@ -19,35 +20,45 @@ class ContactForm extends Component {
     const { blog } = this.props;
     const { img } = this.state;
     return (
-      <div>
-        <div className="blog">
-          <div className="blog-header">
-            <h1>TECH POSTS</h1>
-          </div>
-          <Link to={`/blog`}>Back To blogs</Link>
-          {blog ? (
-            <div className="blog-view">
-              {img && <img src={`/api/blog/pix/${blog._id}`} alt="blog-pix" />}
-              <p className="headline">{blog.headline}</p>
-              <div
-                className="blog-others"
-                dangerouslySetInnerHTML={{ __html: blog.detail }}
-              />
-              <div>
-                {blog.comments.map(comment => (
-                  <div className="comments" key={comment._id}>
-                    <p>{comment.name}</p>
-                    <h3>{comment.comment}</h3>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <p>Wrong Place</p>
+      <HelmetProvider>
+        <div>
+          {blog && (
+            <Helmet>
+              <title>Diginature Blog</title>
+              <meta name={blog.headline} content={blog.detail} />
+            </Helmet>
           )}
+          <div className="blog">
+            <div className="blog-header">
+              <h1>TECH POSTS</h1>
+            </div>
+            <Link to={`/blog`}>Back To blogs</Link>
+            {blog ? (
+              <div className="blog-view">
+                {img && (
+                  <img src={`/api/blog/pix/${blog._id}`} alt="blog-pix" />
+                )}
+                <p className="headline">{blog.headline}</p>
+                <div
+                  className="blog-others"
+                  dangerouslySetInnerHTML={{ __html: blog.detail }}
+                />
+                <div>
+                  {blog.comments.map(comment => (
+                    <div className="comments" key={comment._id}>
+                      <p>{comment.name}</p>
+                      <h3>{comment.comment}</h3>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <p>Wrong Place</p>
+            )}
+          </div>
+          {blog && <Comments id={blog._id} history={this.props.history} />}
         </div>
-        {blog && <Comments id={blog._id} history={this.props.history} />}
-      </div>
+      </HelmetProvider>
     );
   }
 }
