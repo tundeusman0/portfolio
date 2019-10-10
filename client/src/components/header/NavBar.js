@@ -10,6 +10,15 @@ class NavBar extends React.Component {
   };
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
+    const nav = document.getElementById('nav');
+    nav.addEventListener('click', () => {
+      console.log(nav.style.display);
+      if (nav.style.display !== 'none') {
+        nav.style.display = 'none';
+        this.setState({ toggle_style: '' });
+        this.setState({ class_toggle: 'none' });
+      }
+    });
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange);
@@ -52,6 +61,7 @@ class NavBar extends React.Component {
             <div style={props}>
               <div
                 className="navigation"
+                id="nav"
                 style={{
                   display: isMobile ? class_toggle : 'flex'
                 }}
