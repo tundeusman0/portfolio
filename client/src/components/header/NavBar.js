@@ -12,11 +12,14 @@ class NavBar extends React.Component {
     window.addEventListener('resize', this.handleWindowSizeChange);
     const nav = document.getElementById('nav');
     nav.addEventListener('click', () => {
-      console.log(nav.style.display);
-      if (nav.style.display !== 'none') {
-        nav.style.display = 'none';
-        this.setState({ toggle_style: '' });
-        this.setState({ class_toggle: 'none' });
+      if (this.state.width <= 500) {
+        if (nav.style.display !== 'none') {
+          nav.style.display = 'none';
+          this.setState({ toggle_style: '' });
+          this.setState({ class_toggle: 'none' });
+        } else {
+          nav.style.display = 'flex';
+        }
       }
     });
   }

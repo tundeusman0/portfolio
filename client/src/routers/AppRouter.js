@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import Resume from '../components/resume/Resume';
 import Blogs from '../components/Blog/Blogs';
 import BlogPost from '../components/Blog/BlogPost';
+import Chat from '../components/chat/Chat';
 import AdminRouters from './AdminRouters';
 
 const history = createBrowserHistory();
@@ -23,7 +24,7 @@ const AppRouter = () => (
         <Route exact path="/resume" component={Resume} />
         <Route exact path="/blog" component={Blogs} />
         <Route exact path="/blog/:id" component={BlogPost} />
-        <Route exact path="/chat" component={BlogPost} />
+        <Route exact path="/chat" component={Chat} />
         <AdminRouters />
         <Route exact component={NoMatch} />
       </Switch>
