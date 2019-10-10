@@ -8,6 +8,7 @@ import ResumeDetails from './ResumeDetails';
 class Resume extends React.Component {
   state = {
     resume: '',
+    isLoading: false,
     width: window.innerWidth,
     height: window.innerHeight
   };
@@ -21,7 +22,7 @@ class Resume extends React.Component {
     window.addEventListener('resize', this.handleWindowSizeChange);
     axios
       .get('/api/resume')
-      .then(res => this.setState({ resume: res.data }))
+      .then(res => this.setState({ resume: res.data, isLoading: true }))
       .catch(e => console.warn(e));
   }
   printDocument = () => {
@@ -57,23 +58,27 @@ class Resume extends React.Component {
   render() {
     return (
       <div>
-        {this.state.resume && (
-          <div id="divToPrint" className="resume">
-            <ResumeHeader
-              details={this.state.resume.details}
-              education={this.state.resume.education}
-              proffesionalBody={this.state.resume.proffesionalBody}
-              projects={this.state.resume.projects}
-              personalProfile={this.state.resume.personalProfile}
-            />
-            <ResumeDetails
-              contact={this.state.resume.contact}
-              tech={this.state.resume.tech}
-              social={this.state.resume.social}
-              reference={this.state.resume.reference}
-              download={this.printDocument}
-            />
-          </div>
+        {!this.state.isLoading ? (
+          <h1 style={{ color: 'white' }}>Loading......</h1>
+        ) : (
+          this.state.resume && (
+            <div id="divToPrint" className="resume">
+              <ResumeHeader
+                details={this.state.resume.details}
+                education={this.state.resume.education}
+                proffesionalBody={this.state.resume.proffesionalBody}
+                projects={this.state.resume.projects}
+                personalProfile={this.state.resume.personalProfile}
+              />
+              <ResumeDetails
+                contact={this.state.resume.contact}
+                tech={this.state.resume.tech}
+                social={this.state.resume.social}
+                reference={this.state.resume.reference}
+                download={this.printDocument}
+              />
+            </div>
+          )
         )}
       </div>
     );
