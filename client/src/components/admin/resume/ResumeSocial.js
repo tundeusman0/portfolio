@@ -31,7 +31,7 @@ class ResumeTech extends React.Component {
   };
   render() {
     return (
-      <div className="User" style={{ marginTop: '0', marginBottom: '0' }}>
+      <div>
         <div className="form_wrapper" style={{ margin: '5px' }}>
           <div className="form_container">
             <div className="title_container">

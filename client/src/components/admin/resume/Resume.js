@@ -30,10 +30,7 @@ class Resume extends React.Component {
   }
   render() {
     return (
-      <div
-        className="User arrange"
-        style={{ marginTop: '0', marginBottom: '0' }}
-      >
+      <div className="User arrange">
         {this.state.msg && <h2>{this.state.msg}</h2>}
         <Link to="/admin/admin">Back to Admin User</Link>
         <Link to="/admin/add_resume">Add Resume</Link>

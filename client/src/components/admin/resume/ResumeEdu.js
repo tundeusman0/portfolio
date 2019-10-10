@@ -5,7 +5,7 @@ import { postEdu, deleteEdu } from '../../../actions/resume/resumeEdu';
 
 const ResumeEdu = ({ postEdu, edus, history, deleteEdu }) => {
   return (
-    <div className="User">
+    <div>
       <OtherForm
         history={history}
         formName="Post Edu"

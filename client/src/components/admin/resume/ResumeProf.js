@@ -5,7 +5,7 @@ import { postProf, deleteProf } from '../../../actions/resume/ResumeProf';
 
 const ResumeProf = ({ postProf, profs, history, deleteProf }) => {
   return (
-    <div className="User" style={{ marginTop: '0', marginBottom: '0' }}>
+    <div>
       <OtherForm
         history={history}
         formName="Post Prof"
@@ -33,8 +33,7 @@ const ResumeProf = ({ postProf, profs, history, deleteProf }) => {
 };
 
 const mapStateToProps = state => ({
-  profs:
-    state.resume.resume && state.resume.resume.proffesionalBody
+  profs: state.resume.resume && state.resume.resume.proffesionalBody
 });
 
 export default connect(
