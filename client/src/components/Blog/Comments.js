@@ -38,7 +38,6 @@ class Comments extends React.Component {
                         <i aria-hidden="true" className="fa fa-user"></i>
                       </span>
                       <input
-                        autoFocus={true}
                         type="text"
                         placeholder="Name"
                         value={this.state.name}

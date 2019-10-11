@@ -9,7 +9,7 @@ class resumeDetails extends React.Component {
     const isMobile = this.state.width <= 500;
     const div = document.getElementById('printButton');
     if (isMobile) {
-      div.style.top = '-600px';
+      div.style.top = '-669px';
     }
   }
   componentWillUnmount() {

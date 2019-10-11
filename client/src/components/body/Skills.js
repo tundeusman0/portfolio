@@ -19,7 +19,7 @@ export default class Skills extends Component {
     let { skills } = this.state;
     return (
       <div className="home-skills">
-        <h1>My Stack</h1>
+        <h1>My Stacks</h1>
         <ul>
           <li>
             TECH <span className="skill-rating">RATING</span>
