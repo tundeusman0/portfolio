@@ -75,6 +75,7 @@
 .resume-edu-name {
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
 }
 
 .resume-header-edu ul li {
@@ -132,9 +133,16 @@ div.proj-details > div:last-child {
   overflow-wrap: break-word;
   word-break: break-word;
 }
+.space{
+  display:flex; margin-right:20px;
+}
+.resume span a {
+  word-break: break-all;
+}
 
-.proj-details table > tr td {
+.proj-details table tr td {
   border-bottom: black 2px solid;
+  padding-bottom:30px;
 }
 .proj-details table > tr td:nth-child(2) {
   border-right: black 2px solid;
