@@ -73,7 +73,7 @@ class resumeDetails extends React.Component {
             {social &&
               social.map(socials => (
                 <div key={socials.name} className="tech-detail">
-                  <div>
+                  <div className="space">
                     <i className={socials.logo}></i>
                     {socials.name}
                   </div>
