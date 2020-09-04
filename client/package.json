@@ -10,7 +10,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "js-cookie": "^2.2.1",
     "jspdf": "^1.5.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-draft-wysiwyg": "^1.13.2",
